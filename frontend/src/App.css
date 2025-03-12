@@ -40,3 +40,12 @@
 .read-the-docs {
   color: #888;
 }
+
+.header {
+  background-color: green;
+  color: white;
+  text-align: center;
+  font-size: 24px;
+  padding: 20px 0;
+  font-weight: bold;
+}
