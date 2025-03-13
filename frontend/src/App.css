@@ -113,7 +113,7 @@ h3 {
 .search-bar input[type="text"] {
   margin-top: 1%;
   height: 10px; 
-  width: 40%; 
+  width: 40vw; 
   padding: 15px 20px 15px 50px; 
   border-radius: 50px;
   border: none;
