@@ -8,7 +8,7 @@ function App() {
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
-    fetch('http://localhost:3000/courts') // alterar pro localhost certo
+    fetch('') // alterar pro localhost certo
       .then(response => response.json())
       .then(data => setCourts(data))
       .catch(error => console.error('Erro ao buscar quadras:', error));
@@ -32,16 +32,15 @@ function App() {
       <div className='container'>
         <img src={logo} alt='Logo PlaySpot' className='logo' />
         <h2>Encontre sua próxima Quadra</h2>
-        <div className='search-bar-container'>
+        <div className="search-bar">
           <input
-            type='text'
-            placeholder='Buscar...'
-            className='search-bar'
+            type="text"
+            placeholder="Pesquisar..."
             value={searchTerm}
             onChange={handleSearchChange}
           />
         </div>
-      </div>
+        </div>
 
       <div className='courts-section'>
         <h3>Locais Próximos:</h3>
