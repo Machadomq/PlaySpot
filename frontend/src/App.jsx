@@ -1,3 +1,4 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import logo from './assets/logo.png';
 import usericon from './assets/usericon.png';
@@ -41,7 +42,6 @@ function App() {
           />
         </div>
         </div>
-
       <div className='courts-section'>
         <h3>Locais Próximos:</h3>
         <div className='courts-grid'>
