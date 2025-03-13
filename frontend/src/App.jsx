@@ -4,6 +4,7 @@ import logo from './assets/logo.png';
 import usericon from './assets/usericon.png';
 import { useState, useEffect } from 'react';
 
+
 function App() {
   const [courts, setCourts] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -29,6 +30,7 @@ function App() {
         <p className='titulo'>PlaySpot</p>
         <img className='usericon' src={usericon} alt='User Icon' />
       </header>
+      
 
       <div className='container'>
         <img src={logo} alt='Logo PlaySpot' className='logo' />
@@ -42,6 +44,9 @@ function App() {
           />
         </div>
         </div>
+        
+      
+
       <div className='courts-section'>
         <h3>Locais Próximos:</h3>
         <div className='courts-grid'>
