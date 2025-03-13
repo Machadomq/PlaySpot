@@ -2,8 +2,15 @@ import { useState } from 'react'
 import './App.css'
 import logo from './assets/logo.png'
 import usericon from './assets/usericon.png'
+import searchicon from './assets/searchicon.png'
 
 function App() {
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
   return (
     <>
       <header>
@@ -12,12 +19,20 @@ function App() {
       </header>
 
       <div className="container">
-        <img src={logo} alt="Logo PlaySpot" />
+        <img className="logoPlaySpot" src={logo} alt="" />
+        <h2>Encontre sua proxima quadra:</h2>
+        
+        <div className="search-bar">
+          <input
+            type="text"
+            placeholder="Pesquisar..."
+            value={searchTerm}
+            onChange={handleSearchChange}
+          />
+        </div>
       </div>
-      
     </>
   )
 }
 
 export default App
-
