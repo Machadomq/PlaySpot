@@ -2,7 +2,6 @@ import { useState } from 'react'
 import './App.css'
 import logo from './assets/logo.png'
 import usericon from './assets/usericon.png'
-import searchicon from './assets/searchicon.png'
 
 function App() {
   const [searchTerm, setSearchTerm] = useState('');
