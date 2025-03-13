@@ -13,6 +13,12 @@ function App() {
       .catch(error => console.error('Erro ao buscar quadras:', error));
   }, []);
 
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
   return (
     <>
       <header>
