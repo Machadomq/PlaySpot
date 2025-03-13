@@ -4,7 +4,7 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: #3E4D55;
+  background-color: #2f3a40;
   color: white;
   display: flex;
   flex-direction: column;
@@ -31,6 +31,7 @@ header {
 
 h2 {
   margin: 0;
+  margin-bottom: 2px;
   padding: 0;
   line-height: 1;
   font-family: 'Roboto', sans-serif;
@@ -57,7 +58,8 @@ h2 {
 }
 
 .logo {
-  width: 130px;
+  width: 100px;
+  
 }
 /*
 .courts-section {
@@ -113,7 +115,7 @@ h3 {
 .search-bar input[type="text"] {
   margin-top: 1%;
   height: 10px; 
-  width: 40%; 
+  width: 60vh; 
   padding: 15px 20px 15px 50px; 
   border-radius: 50px;
   border: none;
