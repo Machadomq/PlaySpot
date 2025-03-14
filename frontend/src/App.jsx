@@ -3,13 +3,15 @@ import './App.css';
 import logo from './assets/logo.png';
 import usericon from './assets/usericon.png';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function App() {
   const [courts, setCourts] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
-    fetch('') // alterar pro localhost certo
+    fetch('http://localhost:3000/courts') // alterar pro localhost certo
       .then(response => response.json())
       .then(data => setCourts(data))
       .catch(error => console.error('Erro ao buscar quadras:', error));
@@ -23,11 +25,15 @@ function App() {
     court.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  const handleUserIconClick = () => {
+    navigate('/user-profile');
+  };
+
   return (
     <>
       <header>
         <p className='titulo'>PlaySpot</p>
-        <img className='usericon' src={usericon} alt='User Icon' />
+        <img className='usericon' src={usericon} alt='User Icon' onClick={handleUserIconClick} />
       </header>
 
       <div className='container'>
@@ -41,7 +47,7 @@ function App() {
             onChange={handleSearchChange}
           />
         </div>
-        </div>
+      </div>
       <div className='courts-section'>
         <h3>Locais Próximos:</h3>
         <div className='courts-grid'>
@@ -59,4 +65,3 @@ function App() {
 }
 
 export default App;
-
