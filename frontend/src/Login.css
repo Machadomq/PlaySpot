@@ -54,11 +54,11 @@
 }
 
 .userIcon1{
-    height: 12vh;
-    margin-bottom: 3vh;
-    margin-top: 1vh;
-    background-color: #d9d9d9;
-    border-radius: 50%;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  margin-top: -3vh;
+  margin-bottom: 2vh;
+  width: 6vw;
 }
 
 .forgot-password {

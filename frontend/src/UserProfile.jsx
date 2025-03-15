@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Login.css';
 import React from 'react';
-import userIcon1 from './assets/userIcon1.png'
+import userIcon1 from './assets/userIcon2.png'
 
 function UserProfile() {
   return (
