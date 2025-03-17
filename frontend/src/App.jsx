@@ -5,12 +5,21 @@ import usericon from './assets/usericon.png';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-
 function App() {
+  const [mensagem, setMensagem] = useState("");
   const [courts, setCourts] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const navigate = useNavigate();
 
+  // Carregar a mensagem da API
+  useEffect(() => {
+    fetch("http://localhost:8083/api/exemplo")
+      .then(response => response.json())
+      .then(data => setMensagem(data.mensagem))
+      .catch(error => console.error("Erro ao buscar dados:", error));
+  }, []);
+
+  // Carregar as quadras da API
   useEffect(() => {
     fetch('http://localhost:3000/courts') // alterar pro localhost certo
       .then(response => response.json())
@@ -36,11 +45,12 @@ function App() {
         <p className='titulo'>PlaySpot</p>
         <img className='usericon' src={usericon} alt='User Icon' onClick={handleUserIconClick} />
       </header>
-      
 
       <div className='container'>
         <img src={logo} alt='Logo PlaySpot' className='logo' />
         <h2>Encontre sua próxima Quadra</h2>
+        <p>{mensagem}</p> {/* Mensagem vinda do backend */}
+
         <div className="search-bar">
           <input
             type="text"
@@ -49,9 +59,7 @@ function App() {
             onChange={handleSearchChange}
           />
         </div>
-        </div>
-        
-      
+      </div>
 
       <div className='courts-section'>
         <h3>Locais Próximos:</h3>
