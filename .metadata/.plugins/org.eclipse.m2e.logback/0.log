@@ -346,3 +346,21 @@
 2025-03-17 16:47:55,623 [Worker-50: Launching Executing test in C__Users_pc_programa_PlaySpot_PlaySpot_Eclipse_program] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\pc\.p2\pool\plugins\com.google.guava.failureaccess_1.0.2.jar
 2025-03-17 16:47:55,623 [Worker-50: Launching Executing test in C__Users_pc_programa_PlaySpot_PlaySpot_Eclipse_program] INFO  o.e.m.i.launch.MavenLaunchDelegate - Run build in "C:\Users\pc\programa\PlaySpot\PlaySpot_Eclipse\program":
 2025-03-17 16:47:55,624 [Worker-50: Launching Executing test in C__Users_pc_programa_PlaySpot_PlaySpot_Eclipse_program] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B -Dstyle.color=always test
+2025-03-17 16:58:34,731 [Worker-6: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2025-03-18 10:26:17,389 [Worker-5: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2025-03-18 10:51:08,881 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-03-18 10:51:08,897 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-03-18 10:51:08,900 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\pc\programa\PlaySpot\PlaySpot_Eclipse\program\src\test\resources
+2025-03-18 10:51:37,500 [Worker-40: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-03-18 10:51:37,503 [Worker-40: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-03-18 10:51:37,506 [Worker-40: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\pc\programa\PlaySpot\PlaySpot_Eclipse\program\src\test\resources
+2025-03-18 10:51:38,806 [Worker-33: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-03-18 10:51:38,808 [Worker-33: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-03-18 10:51:38,810 [Worker-33: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\pc\programa\PlaySpot\PlaySpot_Eclipse\program\src\test\resources
+2025-03-18 10:51:45,905 [Worker-40: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-03-18 10:51:45,908 [Worker-40: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-03-18 10:51:45,910 [Worker-40: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\pc\programa\PlaySpot\PlaySpot_Eclipse\program\src\test\resources
+2025-03-18 11:12:50,553 [Worker-45: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-03-18 11:12:50,556 [Worker-45: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-03-18 11:12:50,558 [Worker-45: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\pc\programa\PlaySpot\PlaySpot_Eclipse\program\src\test\resources
+2025-03-18 13:42:55,113 [Worker-5: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
