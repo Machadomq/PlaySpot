@@ -1,0 +1,5 @@
+package com.playspot.backend.controller;
+
+public class usuarioController {
+
+}

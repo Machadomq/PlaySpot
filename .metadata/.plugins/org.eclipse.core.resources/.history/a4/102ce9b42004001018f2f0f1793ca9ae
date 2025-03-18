@@ -1,0 +1,5 @@
+package com.playspot.backend.models;
+
+public class user {
+
+}
