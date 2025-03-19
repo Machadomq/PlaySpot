@@ -27,7 +27,7 @@ function App() {
   );
 
   const handleUserIconClick = () => {
-    navigate('/user-profile');
+    navigate('/login');
   };
 
   return (

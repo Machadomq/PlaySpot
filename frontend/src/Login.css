@@ -95,3 +95,7 @@
   text-decoration: none;
   padding: 1vh 1vw;
 }
+.btn-link:hover{
+  text-decoration: none;
+  color: #2f7747;
+}
