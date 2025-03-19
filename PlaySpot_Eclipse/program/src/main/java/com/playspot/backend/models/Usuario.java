@@ -1,16 +1,28 @@
 package com.playspot.backend.models;
 
 import java.util.Date;
+import jakarta.persistence.*;
 
 import com.playspot.backend.models.enums.TipoUsuario;
 
+@Entity
+@Table(name = "usuarios")
 public class Usuario {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idusuarios;
+
     private String nome;
     private String email;
     private String senha;
+
+    @Enumerated(EnumType.STRING)
     private TipoUsuario tipo;
+
+    @Temporal(TemporalType.DATE)
     private Date dataNascimento;
+
     private String CPF;
     private String estado;
     private String cidade;
@@ -20,8 +32,7 @@ public class Usuario {
     private String cep;
     private String telefone;
 
-    public Usuario() {
-    }
+    public Usuario() {}
 
     public Usuario(int idusuarios, String nome, String email, String senha, TipoUsuario tipo, Date dataNascimento,
                    String CPF, String estado, String cidade, String rua, String bairro, String numero,
