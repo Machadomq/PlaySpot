@@ -1,0 +1,6 @@
+package com.playspot.backend.models.enums.copy;
+
+public enum TipoUsuario {
+    DONO,
+    CLIENTE
+}

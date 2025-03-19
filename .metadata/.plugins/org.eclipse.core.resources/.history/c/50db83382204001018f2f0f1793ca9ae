@@ -1,0 +1,21 @@
+package com.playspot.backend.models;
+
+import java.util.Date;
+
+public class Usuario {
+    private int idusuarios;
+    private String nome;
+    private String email;
+    private String senha;
+    private String tipo;
+    private Date dataNascimento;
+    private String CPF;
+    private String estado;
+    private String cidade;
+    private String rua;
+    private String bairro;
+    private String numero;
+    private String cep;
+    private String telefone;
+}
+    

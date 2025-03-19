@@ -3,8 +3,8 @@
 
 body {
   margin: 0;
-  font-family: 'Roboto', sans-serif;
-  background-color: #3E4D55;
+  font-family: 'roboto', sans-serif;
+  background-color: #2f3a40;
   color: white;
   display: flex;
   flex-direction: column;
@@ -31,6 +31,7 @@ header {
 
 h2 {
   margin: 0;
+  margin-bottom: 2px;
   padding: 0;
   line-height: 1;
   font-family: 'Roboto', sans-serif;
@@ -57,7 +58,8 @@ h2 {
 }
 
 .logo {
-  width: 130px;
+  width: 100px;
+  
 }
 
 .courts-section {
@@ -70,39 +72,6 @@ h3 {
   margin-bottom: 10px;
 }
 
-.courts-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 15px;
-  justify-content: center;
-}
-
-.court-card {
-  background-color: #3C4A57;
-  border-radius: 10px;
-  overflow: hidden;
-  text-align: center;
-  padding: 10px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.court-image {
-  width: 100%;
-  border-radius: 10px;
-}
-
-.court-price {
-  font-size: 16px;
-  font-weight: bold;
-  color: #42AA65;
-  margin: 5px 0;
-}
-
-.court-name {
-  font-size: 14px;
-  color: #ddd;
-}
-
 .search-bar {
   display: flex;
   justify-content: center;
@@ -113,7 +82,7 @@ h3 {
 .search-bar input[type="text"] {
   margin-top: 1%;
   height: 10px; 
-  width: 40vw; 
+  width: 80vh; 
   padding: 15px 20px 15px 50px; 
   border-radius: 50px;
   border: none;

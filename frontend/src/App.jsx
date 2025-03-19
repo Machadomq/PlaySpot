@@ -5,6 +5,7 @@ import usericon from './assets/usericon.png';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+
 function App() {
   const [courts, setCourts] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -35,6 +36,7 @@ function App() {
         <p className='titulo'>PlaySpot</p>
         <img className='usericon' src={usericon} alt='User Icon' onClick={handleUserIconClick} />
       </header>
+      
 
       <div className='container'>
         <img src={logo} alt='Logo PlaySpot' className='logo' />
@@ -47,7 +49,10 @@ function App() {
             onChange={handleSearchChange}
           />
         </div>
-      </div>
+        </div>
+        
+      
+
       <div className='courts-section'>
         <h3>Locais Próximos:</h3>
         <div className='courts-grid'>
