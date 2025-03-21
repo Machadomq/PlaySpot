@@ -32,19 +32,19 @@
 }
 
 .login-content {
-  background-color: #2f3a40;
-  padding: 40px;
+  background-color: #3a474e;
+  padding: 10vh;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   text-align: center;
   width: 30vw;
-  height: 65vh;
+  height: 68vh;
   font-family: 'Roboto', sans-serif;
   margin-top: 15vh;
 }
 
 .login-form .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 2vh;
 }
 
 .login-form .form-control {
@@ -53,19 +53,25 @@
   background-color: #d9d9d9;
 }
 
+
+
 .userIcon1{
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
   border-radius: 50%;
   margin-top: -3vh;
-  margin-bottom: 2vh;
+  margin-bottom: 3vh;
   width: 6vw;
 }
 
 .forgot-password {
   display: block;
-  margin-bottom: 15px;
-  color: #ecf0f1;
+  align-items: center;
+  color: #d9d9d9;
   text-decoration: none;
+}
+.forgot-password:hover {
+  text-decoration: none;
+  color: #adadad;
 }
 
 .btn-primary {
