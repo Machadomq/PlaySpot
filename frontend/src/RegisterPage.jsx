@@ -11,6 +11,11 @@ function RegisterPage() {
     navigate('/');
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    navigate('/register-confirmation');
+  };
+
   return (
     <div className="RegisterPage-container">
       <header className="register-header">
@@ -18,7 +23,7 @@ function RegisterPage() {
       </header>
       <div className="register-content">
         <img src={userIcon} alt="User Icon" className="userIcon" />
-        <form className="register-form">
+        <form className="register-form" onSubmit={handleSubmit}>
           <div className="row">
             <div className="col-md-6">
               <div className="form-group">
