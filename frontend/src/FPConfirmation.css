@@ -50,3 +50,7 @@
     margin-top: 5.5vh;
     font-size: medium;
 }
+
+.titulo:hover{
+    cursor: pointer;
+}

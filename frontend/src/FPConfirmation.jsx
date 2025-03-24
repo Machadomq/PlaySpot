@@ -10,10 +10,14 @@ function FPConfirmation() {
     navigate('/login');
   };
 
+  const handleTitleClick = () => {
+    navigate('/');
+  };
+
   return (
     <div className="confirmation-container">
       <header className="confirmation-header">
-        <p className="titulo">PlaySpot</p>
+        <p className="titulo" onClick={handleTitleClick}>PlaySpot</p>
       </header>
       <div id='main'>
         <div className="confirmation-content">

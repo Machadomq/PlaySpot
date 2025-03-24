@@ -1,17 +1,29 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './RegisterPage.css'; 
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import userIcon from './assets/userIcon2.png'; 
 
 function RegisterPage() {
+  const navigate = useNavigate();
+
+  const handleTitleClick = () => {
+    navigate('/');
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    navigate('/register-confirmation');
+  };
+
   return (
     <div className="RegisterPage-container">
       <header className="register-header">
-        <p className="titulo">PlaySpot</p>
+        <p className="titulo" onClick={handleTitleClick}>PlaySpot</p>
       </header>
       <div className="register-content">
         <img src={userIcon} alt="User Icon" className="userIcon" />
-        <form className="register-form">
+        <form className="register-form" onSubmit={handleSubmit}>
           <div className="row">
             <div className="col-md-6">
               <div className="form-group">
