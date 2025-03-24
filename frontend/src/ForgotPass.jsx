@@ -11,10 +11,14 @@ function ForgotPass() {
     navigate('/fp-confirmation');
   };
 
+  const handleTitleClick = () => {
+    navigate('/');
+  };
+
   return (
     <div className="UserProfile-container">
       <header className="login-header">
-        <p className="titulo">PlaySpot</p>
+        <p className="titulo" onClick={handleTitleClick}>PlaySpot</p>
       </header>
       <div id='main'>
         <div className="recover-content">
