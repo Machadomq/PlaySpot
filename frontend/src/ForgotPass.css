@@ -11,10 +11,21 @@
 }
 
 .forgotpass-header {
-  background-color: #27ae60;
-  width: 100%;
-  text-align: center;
-  padding: 10px 0;
+  background-color: #42AA65;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  width: 100vw;
+  height: 10vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  font-family: 'Medula One', cursive;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .main {
