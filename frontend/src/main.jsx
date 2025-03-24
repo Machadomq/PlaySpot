@@ -6,6 +6,7 @@ import App from './App.jsx';
 import Login from './Login.jsx';
 import RegisterPage from './RegisterPage.jsx';
 import ForgotPass from './ForgotPass.jsx';
+import FPConfirmation from './FPConfirmation.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -15,6 +16,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/login" element={<Login />} />
         <Route path="/RegisterPage" element={<RegisterPage />} />
         <Route path="/forgot-password" element={<ForgotPass />} />
+        <Route path="/fp-confirmation" element={<FPConfirmation />} />
         {/* Adicione outras rotas conforme necessário */}
       </Routes>
     </Router>
