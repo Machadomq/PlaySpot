@@ -92,6 +92,10 @@ public class Quadra {
         return idQuadra;
     }
 
+    public void setIdQuadra(int idQuadra){
+        this.idQuadra = idQuadra;
+    }
+
     public int getIdProprietario() {
         return idProprietario;
     }
