@@ -20,19 +20,19 @@ public class UserIntegrationTest {
     @Test
     void insertUser() {
         User user = new User(
-                "machado",
+                "jiovani",
                 "senha123",
-                "gabrielmq@example.com",
-                COMERCIO,
+                "joveni@example.com",
+                CLIENTE,
                 new Date(),
-                "143.450.789-10",
-                "sc",
-                "joinville",
-                "Vila",
-                "Rua",
+                "112.490.789-10",
+                "São Paulo",
+                "piracicaba",
+                "guainazes",
+                "Rua de thola",
                 "123",
-                "01011-111",
-                "(11) 98765-1239"
+                "91011-111",
+                "(69) 98755-1239"
         );
 
         User savedUser = userService.saveUser(user);
