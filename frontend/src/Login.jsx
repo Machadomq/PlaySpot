@@ -1,11 +1,35 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Login.css';
-import React from 'react';
-import { useNavigate } from 'react-router-dom'; 
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import userIcon1 from './assets/userIcon2.png';
 
 function Login() {
   const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    email: '',
+    senha: ''
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post('http://localhost:8080/api/usuarios/login', formData);
+      console.log('Login realizado:', response.data);
+      navigate('/dashboard');
+    } catch (error) {
+      console.error('Erro no login:', error);
+      // Aqui adicionar um alerta ou mensagem de erro
+    }
+  };
 
   const handleRegisterClick = () => {
     navigate('/RegisterPage');
@@ -27,15 +51,33 @@ function Login() {
       <div id='main'>
         <div className="login-content">
           <img src={userIcon1} alt="User Icon" className="userIcon1" />
-          <form className="login-form">
+          <form className="login-form" onSubmit={handleSubmit}>
             <div className="form-group">
-              <input type="email" className="form-control" placeholder="Email" />
+              <input
+                type="email"
+                name="email"
+                className="form-control"
+                placeholder="Email"
+                value={formData.email}
+                onChange={handleChange}
+              />
             </div>
             <div className="form-group">
-              <input type="password" className="form-control" placeholder="Senha" />
+              <input
+                type="password"
+                name="senha"
+                className="form-control"
+                placeholder="Senha"
+                value={formData.senha}
+                onChange={handleChange}
+              />
             </div>
             <div className="form-group">
-              <button type="button" className="btn btn-link forgot-password" onClick={handleForgotPasswordClick}>
+              <button
+                type="button"
+                className="btn btn-link forgot-password"
+                onClick={handleForgotPasswordClick}
+              >
                 Esqueceu a senha?
               </button>
             </div>
