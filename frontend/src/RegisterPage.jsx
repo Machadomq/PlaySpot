@@ -8,14 +8,20 @@ import userIcon from './assets/userIcon2.png';
 function RegisterPage() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    nome: '',
+    nameUser: '',
     dataNascimento: '',
     cpf: '',
     telefone: '',
-    endereco: '',
-    email: '',
-    senha: '',
-    confirmarSenha: ''
+    estado: '',
+    cidade: '',
+    bairro: '',
+    rua: '',
+    numero: '',
+    cep: '',
+    emailUser: '',
+    passwordUser: '',
+    confirmarSenha: '',
+    tipoCliente: 'CLIENTE' // Valor padrão
   });
 
   const handleChange = (e) => {
@@ -28,7 +34,7 @@ function RegisterPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (formData.senha !== formData.confirmarSenha) {
+    if (formData.passwordUser !== formData.confirmarSenha) {
       alert('As senhas não coincidem!');
       return;
     }
@@ -38,7 +44,7 @@ function RegisterPage() {
       console.log('Usuário cadastrado:', response.data);
       navigate('/register-confirmation');
     } catch (error) {
-      console.error('Erro no cadastro:', error);
+      console.error('Erro no cadastro:', error.response?.data || error.message);
       alert('Erro ao cadastrar usuário');
     }
   };
@@ -60,10 +66,10 @@ function RegisterPage() {
               <div className="form-group">
                 <input
                   type="text"
-                  name="nome"
+                  name="nameUser"
                   className="form-control"
                   placeholder="Nome"
-                  value={formData.nome}
+                  value={formData.nameUser}
                   onChange={handleChange}
                 />
               </div>
@@ -97,35 +103,85 @@ function RegisterPage() {
                   onChange={handleChange}
                 />
               </div>
+              <div className="form-group">
+                <input
+                  type="text"
+                  name="estado"
+                  className="form-control"
+                  placeholder="Estado"
+                  value={formData.estado}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="form-group">
+                <input
+                  type="text"
+                  name="cidade"
+                  className="form-control"
+                  placeholder="Cidade"
+                  value={formData.cidade}
+                  onChange={handleChange}
+                />
+              </div>
             </div>
             <div className="col-md-6">
               <div className="form-group">
                 <input
                   type="text"
-                  name="endereco"
+                  name="bairro"
                   className="form-control"
-                  placeholder="Endereço"
-                  value={formData.endereco}
+                  placeholder="Bairro"
+                  value={formData.bairro}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="form-group">
+                <input
+                  type="text"
+                  name="rua"
+                  className="form-control"
+                  placeholder="Rua"
+                  value={formData.rua}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="form-group">
+                <input
+                  type="text"
+                  name="numero"
+                  className="form-control"
+                  placeholder="Número"
+                  value={formData.numero}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="form-group">
+                <input
+                  type="text"
+                  name="cep"
+                  className="form-control"
+                  placeholder="CEP"
+                  value={formData.cep}
                   onChange={handleChange}
                 />
               </div>
               <div className="form-group">
                 <input
                   type="email"
-                  name="email"
+                  name="emailUser"
                   className="form-control"
                   placeholder="Email"
-                  value={formData.email}
+                  value={formData.emailUser}
                   onChange={handleChange}
                 />
               </div>
               <div className="form-group">
                 <input
                   type="password"
-                  name="senha"
+                  name="passwordUser"
                   className="form-control"
                   placeholder="Cadastrar senha"
-                  value={formData.senha}
+                  value={formData.passwordUser}
                   onChange={handleChange}
                 />
               </div>
@@ -138,6 +194,17 @@ function RegisterPage() {
                   value={formData.confirmarSenha}
                   onChange={handleChange}
                 />
+              </div>
+              <div className="form-group">
+                <select
+                  name="tipoCliente"
+                  className="form-control"
+                  value={formData.tipoCliente}
+                  onChange={handleChange}
+                >
+                  <option value="CLIENTE">Cliente</option>
+                  <option value="COMERCIO">Comércio</option>
+                </select>
               </div>
             </div>
           </div>
