@@ -1,0 +1,69 @@
+.workbench-container {
+  display: flex;
+  height: 100vh;
+  background-color: #2f3a40;
+  font-family: 'Roboto', sans-serif;
+}
+
+.hotbar-container {
+  position: fixed;
+    margin-top: 5vh;
+  left: 0;
+  height: 100vh;
+  width: 150px;
+  background-color: #21292d;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.hotbar-item {
+  background-color: #21292d;
+  color: white;
+  border: none;
+  margin: 0px;
+  padding: 10px;
+  width: 150px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.hotbar-item:hover {
+  background-color: #2f7747;
+}
+
+.workbench-content {
+  margin-left: 60px; /* Espaço para a hotbar */
+  width: calc(100vw - 60px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 10vh; /* Compensa a altura do header */
+}
+
+.workbench-header {
+  background-color: #42AA65;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.workbench-main {
+  text-align: center;
+  margin-top: 5vh;
+  color: white;
+}

@@ -8,6 +8,7 @@ import RegisterPage from './RegisterPage.jsx';
 import ForgotPass from './ForgotPass.jsx';
 import FPConfirmation from './FPConfirmation.jsx';
 import RegisterConfirmation from './RegisterConfirmation.jsx';
+import Workbench from "./Workbench.jsx";
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -19,6 +20,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/forgot-password" element={<ForgotPass />} />
         <Route path="/fp-confirmation" element={<FPConfirmation />} />
         <Route path="/register-confirmation" element={<RegisterConfirmation />} />
+        <Route path="/Workbench" element={<Workbench />} />
         {/* Adicione outras rotas conforme necessário */}
       </Routes>
     </Router>
