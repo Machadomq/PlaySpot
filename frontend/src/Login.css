@@ -32,9 +32,9 @@
 }
 
 .login-content {
-  background-color: #3a474e;
+  background-color: #20282c;
   padding: 10vh;
-  border-radius: 10px;
+  border-radius: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   text-align: center;
   width: 30vw;

@@ -104,6 +104,18 @@ function RegisterPage() {
                 />
               </div>
               <div className="form-group">
+                <select
+                    name="tipoCliente"
+                    className="form-control"
+                    value={formData.tipoCliente}
+                    onChange={handleChange}
+                >
+                  <option value="CLIENTE">Cliente</option>
+                  <option value="COMERCIO">Comércio</option>
+                </select>
+              </div>
+
+              <div className="form-group">
                 <input
                   type="text"
                   name="estado"
@@ -195,17 +207,7 @@ function RegisterPage() {
                   onChange={handleChange}
                 />
               </div>
-              <div className="form-group">
-                <select
-                  name="tipoCliente"
-                  className="form-control"
-                  value={formData.tipoCliente}
-                  onChange={handleChange}
-                >
-                  <option value="CLIENTE">Cliente</option>
-                  <option value="COMERCIO">Comércio</option>
-                </select>
-              </div>
+
             </div>
           </div>
           <button type="submit" className="btn btn-success btn-block">Enviar</button>

@@ -32,11 +32,10 @@
   background-color: #2f3a40;
   padding: 30px;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   text-align: center;
   height: 75vh;
   font-family: 'Roboto', sans-serif;
-  margin-top: 15vh;
+  margin-top: 5vh;
 }
 
 .userIcon {
@@ -53,4 +52,5 @@
 .btn-block {
   margin-top: 5vh;
   width: 100%;
+  margin-bottom: 5vh;
 }
