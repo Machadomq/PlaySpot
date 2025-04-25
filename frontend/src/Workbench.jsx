@@ -13,18 +13,17 @@ function Workbench() {
   return (
     <div className="workbench-container">
       <div className="hotbar-container">
-        <button className="hotbar-item" onClick={() => handleNavigation('/')}>Início</button>
-        <button className="hotbar-item" onClick={() => handleNavigation('/courts')}>Quadras</button>
-        <button className="hotbar-item" onClick={() => handleNavigation('/login')}>Login</button>
-        <button className="hotbar-item" onClick={() => handleNavigation('/RegisterPage')}>Cadastro</button>
+        <button className="hotbar-item" onClick={() => handleNavigation('/')}>Minhas Quadras</button>
+        <button className="hotbar-item" onClick={() => handleNavigation('/Registration-courts')}>Cadastrar Quadra</button>
+        <button className="hotbar-item" onClick={() => handleNavigation('/courts')}>Reservas</button>
+        <button className="hotbar-item" onClick={() => handleNavigation('/RegisterPage')}>Financeiro</button>
+          <button className="hotbar-item" onClick={() => handleNavigation('/RegisterPage')}>Minha conta</button>
+          <button className="hotbar-item" onClick={() => handleNavigation('/RegisterPage')}>Suporte</button>
       </div>
       <div className="workbench-content">
         <header className="workbench-header">
           <p className="titulo" onClick={() => navigate('/')}>PlaySpot</p>
         </header>
-        <main className="workbench-main">
-
-        </main>
       </div>
     </div>
   );
