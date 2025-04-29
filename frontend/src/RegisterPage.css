@@ -5,8 +5,10 @@
   flex-direction: column;
   align-items: center;
   height: 100vh;
-  background-color: #2f3a40;
+  background-color: #20282c;
   font-family: 'Roboto', sans-serif;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .register-header {
@@ -29,7 +31,7 @@
 
 
 .register-content {
-  background-color: #2f3a40;
+  background-color: #20282c;
   padding: 30px;
   border-radius: 10px;
   text-align: center;
