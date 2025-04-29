@@ -1,3 +1,12 @@
+.linha-branca {
+    width: 100%; /* Largura da linha */
+    height: 2px; /* Espessura da linha */
+    background-color: #ffffff; /* Cor branca */
+    margin: 20px 0; /* Espaçamento vertical */
+    display: block; /* Garante que a div seja renderizada */
+    content: ""; /* Garante que o elemento seja exibido mesmo vazio */
+}
+
 .RegistrationCourtsContainer {
     display: flex;
     flex-direction: column;
@@ -134,3 +143,4 @@
 .registration-form .btn-success:hover {
     background-color: #369a55;
 }
+

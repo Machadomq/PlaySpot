@@ -58,7 +58,7 @@ function RegistrationCourts() {
             <div className="workbench-content">
                 <h1 className="left-aligned">Cadastro de Quadra:</h1>
                 <p className="left-aligned">Preencha as informações e cadastre seu novo ponto de reserva</p>
-                <div className="linha-branca"></div>
+                <div className="linha-branca">­</div>
 
                 <form className="registration-form" onSubmit={handleSubmit}>
                     <div className="form-row">
