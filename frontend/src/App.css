@@ -86,6 +86,7 @@ h3 {
   padding: 15px 20px 15px 50px; 
   border-radius: 50px;
   border: none;
+  outline: none;
   font-size: 18px;
   background-color: #ffffff;
   color: #2c3e50;
