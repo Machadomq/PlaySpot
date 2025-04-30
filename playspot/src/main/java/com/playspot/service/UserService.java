@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
-
     private final UserRepository userRepository;
 
     public UserService(UserRepository userRepository) {
@@ -17,4 +16,7 @@ public class UserService {
         return userRepository.save(user);
     }
 
+    public User login(String email, String password) {
+        return userRepository.findByEmailUserAndPasswordUser(email, password);
+    }
 }

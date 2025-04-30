@@ -24,10 +24,11 @@ function Login() {
     try {
       const response = await axios.post('http://localhost:8080/api/usuarios/login', formData);
       console.log('Login realizado:', response.data);
-      navigate('/dashboard');
+      alert('Login realizado com sucesso!');
+      navigate('/dashboard'); // Redireciona para a página de dashboard
     } catch (error) {
       console.error('Erro no login:', error);
-      // Aqui adicionar um alerta ou mensagem de erro
+      alert('Erro ao fazer login. Verifique suas credenciais.');
     }
   };
 
