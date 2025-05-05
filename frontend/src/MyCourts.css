@@ -1,0 +1,170 @@
+/* Importar estilos globais ou de base, se houver */
+/* @import url('./base.css'); */
+
+/* Estilos específicos para MyCourts */
+.MyCourtsContainer {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Garante que o container ocupe pelo menos a altura toda */
+    background-color: #2f3a40; /* Cor de fundo padrão do workbench */
+    font-family: 'Roboto', sans-serif; /* Fonte padrão */
+    color: white; /* Cor de texto padrão */
+}
+
+/* Reutiliza estilos do Workbench.css para consistência */
+.workbench-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 10vh;
+    background-color: #42AA65;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.hotbar-container {
+    position: fixed;
+    top: 10vh; /* Abaixo do header */
+    left: 0;
+    height: calc(100vh - 10vh);
+    width: 150px;
+    background-color: #21292d;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    z-index: 999; /* Abaixo do header mas acima do conteúdo */
+}
+
+.hotbar-item {
+    background-color: #21292d;
+    color: white;
+    border: none;
+    margin: 0px;
+    padding: 10px;
+    width: 150px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.hotbar-item:hover {
+    background-color: #2f7747;
+}
+
+.workbench-content {
+    margin-top: 10vh; /* Espaço para o header fixo */
+    margin-left: 150px; /* Espaço para a hotbar fixa */
+    padding: 30px; /* Espaçamento interno do conteúdo */
+    background-color: #2f3a40; /* Cor de fundo da área de conteúdo */
+    flex-grow: 1; /* Faz o conteúdo crescer para preencher o espaço */
+}
+
+.left-aligned {
+    text-align: left;
+    width: 100%;
+    color: white;
+}
+
+.workbench-content h1.left-aligned {
+    font-size: 28px; /* Tamanho do título principal */
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.workbench-content p.left-aligned {
+    font-size: 16px; /* Tamanho do subtítulo/descrição */
+    margin-bottom: 15px;
+    color: #ccc; /* Cor mais suave para o subtítulo */
+}
+
+.linha-branca {
+    height: 1px;
+    background-color: white;
+    width: 100%;
+    margin-bottom: 30px; /* Espaço após a linha */
+}
+
+/* Container da lista de quadras */
+.courts-list-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Layout responsivo em grid */
+    gap: 20px; /* Espaçamento entre os cards */
+    width: 100%;
+}
+
+/* Estilo individual do card da quadra */
+.court-card {
+    background-color: #21292d; /* Cor de fundo do card, mais escura */
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease-in-out;
+    color: white;
+}
+
+.court-card:hover {
+    transform: translateY(-5px); /* Efeito sutil ao passar o mouse */
+}
+
+.court-card h2 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #42AA65; /* Cor de destaque verde */
+    margin-bottom: 10px;
+    border-bottom: 1px solid #444; /* Linha separadora sutil */
+    padding-bottom: 5px;
+}
+
+.court-card p {
+    font-size: 14px;
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+.court-card p strong {
+    color: #aaa; /* Cor para destacar os labels */
+}
+
+/* Estilos para a área de ações dentro do card (opcional) */
+.card-actions {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #444; /* Linha separadora antes das ações */
+    display: flex;
+    gap: 10px; /* Espaçamento entre botões de ação */
+}
+
+/* Estilos para botões dentro do card (exemplo) */
+.card-actions .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.card-actions .btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+/* Mensagem para quando não há quadras */
+.courts-list-container p {
+    grid-column: 1 / -1; /* Ocupa toda a largura do grid */
+    text-align: center;
+    font-size: 16px;
+    color: #aaa;
+    margin-top: 20px;
+}
+

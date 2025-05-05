@@ -10,6 +10,7 @@ import FPConfirmation from './FPConfirmation.jsx';
 import RegisterConfirmation from './RegisterConfirmation.jsx';
 import Workbench from "./Workbench.jsx";
 import RegistrationCourts from "./RegistrationCourts.jsx";
+import MyCourts from "./MyCourts.jsx";
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -23,6 +24,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/register-confirmation" element={<RegisterConfirmation />} />
         <Route path="/Workbench" element={<Workbench />} />
         <Route path="/registration-courts" element={<RegistrationCourts />} />
+        <Route path="/MyCourts" element={<MyCourts/>} />
         {/* Adicione outras rotas conforme necessário */}
       </Routes>
     </Router>
