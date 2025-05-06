@@ -1,131 +1,76 @@
-/* Importar estilos globais ou de base, se houver */
-/* @import url('./base.css'); */
+/* MyCourts.css - Versão Responsiva */
 
 /* Estilos específicos para MyCourts */
 .MyCourtsContainer {
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Garante que o container ocupe pelo menos a altura toda */
-    background-color: #2f3a40; /* Cor de fundo padrão do workbench */
-    font-family: 'Roboto', sans-serif; /* Fonte padrão */
-    color: white; /* Cor de texto padrão */
-}
-
-/* Reutiliza estilos do Workbench.css para consistência */
-.workbench-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 10vh;
-    background-color: #42AA65;
+    min-height: 100vh;
+    background-color: #2f3a40;
+    font-family: 'Roboto', sans-serif;
     color: white;
-    font-size: 40px;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 20px;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
+    /* overflow-x: hidden; Adicionado no Workbench_responsive.css para o container geral */
 }
 
-.hotbar-container {
-    position: fixed;
-    top: 10vh; /* Abaixo do header */
-    left: 0;
-    height: calc(100vh - 10vh);
-    width: 150px;
-    background-color: #21292d;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 10px 0;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
-    z-index: 999; /* Abaixo do header mas acima do conteúdo */
-}
+/* Estilos de .workbench-header, .hotbar-container, .hotbar-item, .workbench-content
+   são primariamente definidos e tornados responsivos em Workbench_responsive.css */
 
-.hotbar-item {
-    background-color: #21292d;
-    color: white;
-    border: none;
-    margin: 0px;
-    padding: 10px;
-    width: 150px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.hotbar-item:hover {
+.hotbar-item.active {
     background-color: #2f7747;
+    font-weight: bold;
 }
 
-.workbench-content {
-    margin-top: 10vh; /* Espaço para o header fixo */
-    margin-left: 150px; /* Espaço para a hotbar fixa */
-    padding: 30px; /* Espaçamento interno do conteúdo */
-    background-color: #2f3a40; /* Cor de fundo da área de conteúdo */
-    flex-grow: 1; /* Faz o conteúdo crescer para preencher o espaço */
-}
+/* Ajustes herdados do Workbench_responsive.css para .workbench-content já o tornam responsivo.
+   As regras abaixo são específicas para o conteúdo DENTRO de MyCourts. */
 
-.left-aligned {
-    text-align: left;
-    width: 100%;
-    color: white;
-}
-
-.workbench-content h1.left-aligned {
-    font-size: 28px; /* Tamanho do título principal */
+.MyCourtsContainer .workbench-content h1.left-aligned {
+    font-size: 28px;
     font-weight: bold;
     margin-bottom: 5px;
 }
 
-.workbench-content p.left-aligned {
-    font-size: 16px; /* Tamanho do subtítulo/descrição */
+.MyCourtsContainer .workbench-content p.left-aligned {
+    font-size: 16px;
     margin-bottom: 15px;
-    color: #ccc; /* Cor mais suave para o subtítulo */
+    color: #ccc;
 }
 
-.linha-branca {
+.MyCourtsContainer .linha-branca {
     height: 1px;
     background-color: white;
     width: 100%;
-    margin-bottom: 30px; /* Espaço após a linha */
+    margin-bottom: 30px;
 }
 
 /* Container da lista de quadras */
 .courts-list-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Layout responsivo em grid */
-    gap: 20px; /* Espaçamento entre os cards */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
     width: 100%;
 }
 
 /* Estilo individual do card da quadra */
 .court-card {
-    background-color: #21292d; /* Cor de fundo do card, mais escura */
+    background-color: #21292d;
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: transform 0.2s ease-in-out;
     color: white;
+    display: flex;
+    flex-direction: column; /* Garante que o conteúdo interno se alinhe verticalmente */
 }
 
 .court-card:hover {
-    transform: translateY(-5px); /* Efeito sutil ao passar o mouse */
+    transform: translateY(-5px);
 }
 
 .court-card h2 {
     font-size: 20px;
     font-weight: bold;
-    color: #42AA65; /* Cor de destaque verde */
+    color: #42AA65;
     margin-bottom: 10px;
-    border-bottom: 1px solid #444; /* Linha separadora sutil */
+    border-bottom: 1px solid #444;
     padding-bottom: 5px;
 }
 
@@ -133,38 +78,100 @@
     font-size: 14px;
     margin-bottom: 8px;
     line-height: 1.5;
+    flex-grow: 1; /* Permite que o parágrafo cresça se houver espaço */
 }
 
 .court-card p strong {
-    color: #aaa; /* Cor para destacar os labels */
+    color: #aaa;
 }
 
-/* Estilos para a área de ações dentro do card (opcional) */
 .card-actions {
     margin-top: 15px;
     padding-top: 10px;
-    border-top: 1px solid #444; /* Linha separadora antes das ações */
+    border-top: 1px solid #444;
     display: flex;
-    gap: 10px; /* Espaçamento entre botões de ação */
+    gap: 10px;
 }
 
-/* Estilos para botões dentro do card (exemplo) */
-.card-actions .btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
-}
-
+.card-actions .btn-primary,
 .card-actions .btn-danger {
-    background-color: #dc3545;
-    border-color: #dc3545;
+    padding: 6px 12px;
+    font-size: 14px;
 }
 
-/* Mensagem para quando não há quadras */
-.courts-list-container p {
-    grid-column: 1 / -1; /* Ocupa toda a largura do grid */
+.courts-list-container > p { /* Mensagem de "Nenhuma quadra" */
+    grid-column: 1 / -1;
     text-align: center;
     font-size: 16px;
     color: #aaa;
     margin-top: 20px;
+}
+
+/* --- Media Queries para Responsividade Específica de MyCourts --- */
+
+/* Para tablets e telas menores (ex: até 992px) */
+@media (max-width: 992px) {
+    .courts-list-container {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 15px;
+    }
+    .court-card {
+        padding: 15px;
+    }
+    .court-card h2 {
+        font-size: 18px;
+    }
+    .court-card p {
+        font-size: 13px;
+    }
+}
+
+/* Para dispositivos móveis (ex: até 768px) */
+@media (max-width: 768px) {
+    .MyCourtsContainer .workbench-content h1.left-aligned {
+        font-size: 24px;
+    }
+    .MyCourtsContainer .workbench-content p.left-aligned {
+        font-size: 15px;
+    }
+    .courts-list-container {
+        /* Em telas muito pequenas, pode ser melhor ter 1 coluna */
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    .court-card h2 {
+        font-size: 17px;
+    }
+}
+
+/* Ajustes finos para telas muito pequenas (ex: até 480px) */
+@media (max-width: 480px) {
+    .MyCourtsContainer .workbench-content h1.left-aligned {
+        font-size: 20px;
+    }
+    .MyCourtsContainer .workbench-content p.left-aligned {
+        font-size: 14px;
+    }
+    .MyCourtsContainer .linha-branca {
+        margin-bottom: 20px;
+    }
+    .court-card {
+        padding: 12px;
+    }
+    .court-card h2 {
+        font-size: 16px;
+        margin-bottom: 8px;
+    }
+    .court-card p {
+        font-size: 12px;
+        margin-bottom: 6px;
+    }
+    .card-actions {
+        flex-direction: column; /* Empilha botões de ação */
+        gap: 8px;
+    }
+    .card-actions .btn {
+        width: 100%;
+    }
 }
 

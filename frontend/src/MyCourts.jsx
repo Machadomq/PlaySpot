@@ -46,12 +46,12 @@ function MyCourts() {
 
             {/* Barra Lateral Padrão */}
             <div className="hotbar-container">
-                <button className="hotbar-item" onClick={() => handleNavigation('/')}>Minhas Quadras</button>
+                <button className="hotbar-item" onClick={() => handleNavigation('/MyCourts')}>Minhas Quadras</button>
                 <button className="hotbar-item" onClick={() => handleNavigation('/Registration-courts')}>Cadastrar Quadra</button>
-                <button className="hotbar-item" onClick={() => handleNavigation('/courts')}>Reservas</button>
-                <button className="hotbar-item" onClick={() => handleNavigation('/RegisterPage')}>Financeiro</button>
-                <button className="hotbar-item" onClick={() => handleNavigation('/RegisterPage')}>Minha conta</button>
-                <button className="hotbar-item" onClick={() => handleNavigation('/RegisterPage')}>Suporte</button>
+                <button className="hotbar-item" onClick={() => handleNavigation('/BookingsScreen')}>Reservas</button>
+                <button className="hotbar-item" onClick={() => handleNavigation('/FinancialScreen')}>Financeiro</button>
+                <button className="hotbar-item" onClick={() => handleNavigation('/my-account')}>Minha conta</button>
+                <button className="hotbar-item" onClick={() => handleNavigation('/SupportScreen')}>Suporte</button>
             </div>
 
             {/* Conteúdo Principal */}

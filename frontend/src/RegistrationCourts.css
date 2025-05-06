@@ -68,14 +68,12 @@
 }
 
 .workbench-content {
+    text-align: left;
     margin-top: 5vh;
-    margin-left: 100px;
     padding: 20px;
-    width: calc(100vw - 150px);
-    height: calc(100vh - 10vh);
+    width: 150vh;
     overflow-y: auto;
     color: white;
-    display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
@@ -93,54 +91,52 @@
 }
 
 .registration-form {
-    width: 50%;
-    max-width: 800px;
+    width: 80%;
+    max-width: 1200px;
     background-color: #21292d;
-    padding: 20px;
+    padding: 30px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
 }
 
-.registration-form .form-row {
+.form-column {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 15px;
+    flex-direction: column;
+    gap: 15px;
 }
 
-.registration-form .form-group {
-    flex: 1;
-    margin-right: 10px;
-}
-
-.registration-form .form-group:last-child {
-    margin-right: 0;
-}
-
-.registration-form .form-control {
+.form-group {
     width: 100%;
-    padding: 10px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 14px;
+    background-color: #fff;
 }
 
-.registration-form .btn {
+.button-container {
+    grid-column: 1 / -1;
+    margin-top: 20px;
+}
+
+.btn-success {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     font-size: 16px;
     font-weight: bold;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
 }
 
-.registration-form .btn-success {
-    background-color: #42AA65;
-    color: white;
+@media (max-width: 768px) {
+    .registration-form {
+        grid-template-columns: 1fr;
+        width: 95%;
+        padding: 20px;
+    }
 }
-
-.registration-form .btn-success:hover {
-    background-color: #369a55;
-}
-

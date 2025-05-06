@@ -47,12 +47,12 @@ function RegistrationCourts() {
             </header>
 
             <div className="hotbar-container">
-                <button className="hotbar-item" onClick={() => handleNavigation('/')}>Minhas Quadras</button>
+                <button className="hotbar-item" onClick={() => handleNavigation('/MyCourts')}>Minhas Quadras</button>
                 <button className="hotbar-item" onClick={() => handleNavigation('/Registration-courts')}>Cadastrar Quadra</button>
-                <button className="hotbar-item" onClick={() => handleNavigation('/courts')}>Reservas</button>
-                <button className="hotbar-item" onClick={() => handleNavigation('/RegisterPage')}>Financeiro</button>
-                <button className="hotbar-item" onClick={() => handleNavigation('/RegisterPage')}>Minha conta</button>
-                <button className="hotbar-item" onClick={() => handleNavigation('/RegisterPage')}>Suporte</button>
+                <button className="hotbar-item" onClick={() => handleNavigation('/BookingsScreen')}>Reservas</button>
+                <button className="hotbar-item" onClick={() => handleNavigation('/FinancialScreen')}>Financeiro</button>
+                <button className="hotbar-item" onClick={() => handleNavigation('/my-account')}>Minha conta</button>
+                <button className="hotbar-item" onClick={() => handleNavigation('/SupportScreen')}>Suporte</button>
             </div>
 
             <div className="workbench-content">
@@ -61,8 +61,8 @@ function RegistrationCourts() {
                 <div className="linha-branca">­</div>
 
                 <form className="registration-form" onSubmit={handleSubmit}>
-                    <div className="form-row">
-                        <div className="form-group col-md-6">
+                    <div className="form-column">
+                        <div className="form-group">
                             <input
                                 type="text"
                                 name="nomeQuadra"
@@ -72,7 +72,7 @@ function RegistrationCourts() {
                                 onChange={handleChange}
                             />
                         </div>
-                        <div className="form-group col-md-6">
+                        <div className="form-group">
                             <input
                                 type="text"
                                 name="esporte"
@@ -82,9 +82,7 @@ function RegistrationCourts() {
                                 onChange={handleChange}
                             />
                         </div>
-                    </div>
-                    <div className="form-row">
-                        <div className="form-group col-md-6">
+                        <div className="form-group">
                             <input
                                 type="number"
                                 name="valorHora"
@@ -94,7 +92,7 @@ function RegistrationCourts() {
                                 onChange={handleChange}
                             />
                         </div>
-                        <div className="form-group col-md-6">
+                        <div className="form-group">
                             <input
                                 type="text"
                                 name="telefone"
@@ -104,9 +102,7 @@ function RegistrationCourts() {
                                 onChange={handleChange}
                             />
                         </div>
-                    </div>
-                    <div className="form-row">
-                        <div className="form-group col-md-6">
+                        <div className="form-group">
                             <input
                                 type="text"
                                 name="cep"
@@ -116,7 +112,9 @@ function RegistrationCourts() {
                                 onChange={handleChange}
                             />
                         </div>
-                        <div className="form-group col-md-6">
+                    </div>
+                    <div className="form-column">
+                        <div className="form-group">
                             <input
                                 type="text"
                                 name="estado"
@@ -126,9 +124,7 @@ function RegistrationCourts() {
                                 onChange={handleChange}
                             />
                         </div>
-                    </div>
-                    <div className="form-row">
-                        <div className="form-group col-md-6">
+                        <div className="form-group">
                             <input
                                 type="text"
                                 name="cidade"
@@ -138,7 +134,7 @@ function RegistrationCourts() {
                                 onChange={handleChange}
                             />
                         </div>
-                        <div className="form-group col-md-6">
+                        <div className="form-group">
                             <input
                                 type="text"
                                 name="bairro"
@@ -148,9 +144,7 @@ function RegistrationCourts() {
                                 onChange={handleChange}
                             />
                         </div>
-                    </div>
-                    <div className="form-row">
-                        <div className="form-group col-md-6">
+                        <div className="form-group">
                             <input
                                 type="text"
                                 name="rua"
@@ -160,7 +154,7 @@ function RegistrationCourts() {
                                 onChange={handleChange}
                             />
                         </div>
-                        <div className="form-group col-md-6">
+                        <div className="form-group">
                             <input
                                 type="text"
                                 name="numero"
@@ -171,7 +165,9 @@ function RegistrationCourts() {
                             />
                         </div>
                     </div>
-                    <button type="submit" className="btn btn-success btn-block">Cadastrar Quadra</button>
+                    <div className="button-container">
+                        <button type="submit" className="btn btn-success">Cadastrar Quadra</button>
+                    </div>
                 </form>
             </div>
         </div>

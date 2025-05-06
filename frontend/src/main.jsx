@@ -11,6 +11,10 @@ import RegisterConfirmation from './RegisterConfirmation.jsx';
 import Workbench from "./Workbench.jsx";
 import RegistrationCourts from "./RegistrationCourts.jsx";
 import MyCourts from "./MyCourts.jsx";
+import BookingsScreen from "./BookingsScreen.jsx";
+import FinancialScreen from "./FinancialScreen.jsx";
+import MyAccountScreen from "./MyAccountScreen.jsx";
+import SupportScreen from "./SupportScreen.jsx";
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -25,6 +29,10 @@ createRoot(document.getElementById('root')).render(
         <Route path="/Workbench" element={<Workbench />} />
         <Route path="/registration-courts" element={<RegistrationCourts />} />
         <Route path="/MyCourts" element={<MyCourts/>} />
+        <Route path="/BookingsScreen" element={<BookingsScreen/>} />
+        <Route path="/FinancialScreen" element={<FinancialScreen />} />
+        <Route path="/my-account" element={<MyAccountScreen />} />
+        <Route path="/SupportScreen" element={<SupportScreen />} />
         {/* Adicione outras rotas conforme necessário */}
       </Routes>
     </Router>
