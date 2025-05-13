@@ -1,4 +1,0 @@
-INDEX VERSION 1.134+C:\Users\lluiv\OneDrive\Documentos\Projetos\PlaySpot\PlaySpot\PlaySpot_Eclipse\.metadata\.plugins\org.eclipse.jdt.core
-1747620122.index
-1865797976.index
-2972433902.index

@@ -99,12 +99,119 @@
     font-size: 14px;
 }
 
+.card-actions .btn-primary {
+    background-color: #42AA65;
+    border-color: #42AA65;
+}
+
+.card-actions .btn-primary:hover {
+    background-color: #368c53;
+    border-color: #368c53;
+}
+
+.card-actions .btn-danger {
+    background-color: #e74c3c;
+    border-color: #e74c3c;
+}
+
+.card-actions .btn-danger:hover {
+    background-color: #c0392b;
+    border-color: #c0392b;
+}
+
 .courts-list-container > p { /* Mensagem de "Nenhuma quadra" */
     grid-column: 1 / -1;
     text-align: center;
     font-size: 16px;
     color: #aaa;
     margin-top: 20px;
+}
+
+.loading-message, .error-message {
+    grid-column: 1 / -1;
+    text-align: center;
+    font-size: 16px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.loading-message {
+    color: #aaa;
+}
+
+.error-message {
+    color: #ff6b6b;
+}
+
+/* Estilos para o modal */
+.modal-content {
+    background-color: #2f3a40;
+    color: white;
+    border: 1px solid #21292d;
+}
+
+.modal-header {
+    background-color: #21292d;
+    border-bottom: 1px solid #444;
+}
+
+.modal-header .close {
+    color: white;
+}
+
+.modal-footer {
+    border-top: 1px solid #444;
+}
+
+.modal-title {
+    color: #42AA65;
+}
+
+/* Estilos para o formulário dentro do modal */
+.modal .form-control {
+    background-color: #21292d;
+    color: white;
+    border: 1px solid #444;
+}
+
+.modal .form-control:focus {
+    border-color: #42AA65;
+    box-shadow: 0 0 0 0.25rem rgba(66, 170, 101, 0.25);
+}
+
+.modal .form-label {
+    color: #ccc;
+}
+
+/* Botões do modal */
+.modal .btn-primary {
+    background-color: #42AA65;
+    border-color: #42AA65;
+}
+
+.modal .btn-primary:hover {
+    background-color: #368c53;
+    border-color: #368c53;
+}
+
+.modal .btn-secondary {
+    background-color: #444;
+    border-color: #444;
+}
+
+.modal .btn-secondary:hover {
+    background-color: #555;
+    border-color: #555;
+}
+
+.modal .btn-danger {
+    background-color: #e74c3c;
+    border-color: #e74c3c;
+}
+
+.modal .btn-danger:hover {
+    background-color: #c0392b;
+    border-color: #c0392b;
 }
 
 /* --- Media Queries para Responsividade Específica de MyCourts --- */
