@@ -3,9 +3,11 @@ import './RegistrationCourts.css';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useUserType } from './AuthComponents';
 
 function RegistrationCourts() {
     const navigate = useNavigate();
+    const { isAdmin, isProprietario, userId } = useUserType();
     const [formData, setFormData] = useState({
         nomeQuadra: '',
         esporte: '',
@@ -16,7 +18,8 @@ function RegistrationCourts() {
         bairro: '',
         rua: '',
         numero: '',
-        cidade: ''
+        cidade: '',
+        idProprietario: userId // Define automaticamente o proprietário
     });
 
     const handleChange = (e) => {
@@ -24,15 +27,31 @@ function RegistrationCourts() {
             ...formData,
             [e.target.name]: e.target.value
         });
-    };
-
-    const handleSubmit = async (e) => {
+    };    const handleSubmit = async (e) => {
         e.preventDefault();
+        
+        // Verifica se o usuário tem permissão para cadastrar quadras
+        if (!isAdmin && !isProprietario) {
+            alert('Acesso negado. Apenas proprietários e administradores podem cadastrar quadras.');
+            return;
+        }
+        
         try {
-            const response = await axios.post('http://localhost:8080/api/quadras/cadastrar', formData);
+            const response = await axios.post('http://localhost:8080/api/quadras/cadastrar', formData, {
+                headers: {
+                    'userId': userId
+                }
+            });
             console.log('Quadra cadastrada:', response.data);
+            alert('Quadra cadastrada com sucesso!');
+            navigate('/MyCourts');
         } catch (error) {
             console.error('Erro ao cadastrar quadra:', error.response?.data || error.message);
+            if (error.response && error.response.status === 403) {
+                alert('Acesso negado. Você não tem permissão para cadastrar quadras.');
+            } else {
+                alert('Erro ao cadastrar quadra. Tente novamente.');
+            }
         }
     };
 

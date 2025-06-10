@@ -2,16 +2,18 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './MyCourts.css';
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios'; // Importando axios para fazer requisições HTTP
+import axios from 'axios';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { useUserType } from './AuthComponents';
 
 function MyCourts() {
     const navigate = useNavigate();
-    const [courts, setCourts] = useState([]); // Estado para armazenar as quadras
-    const [loading, setLoading] = useState(true); // Estado para controlar o carregamento
-    const [error, setError] = useState(null); // Estado para controlar erros
+    const { isAdmin, isProprietario, userId } = useUserType();
+    const [courts, setCourts] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
     
     // Estados para o modal de edição
     const [showEditModal, setShowEditModal] = useState(false);
@@ -34,28 +36,42 @@ function MyCourts() {
     const [courtToDelete, setCourtToDelete] = useState(null);    useEffect(() => {
         fetchCourts();
     }, []);
-    
-    const fetchCourts = async () => {
+      const fetchCourts = async () => {
         try {
-            // Faz a requisição para a API buscando todas as quadras
-            const response = await axios.get('http://localhost:8080/api/quadras');
+            let response;
             
-            // Atualiza o estado com os dados recebidos do banco de dados
+            if (isAdmin) {
+                // Admin pode ver todas as quadras
+                response = await axios.get('http://localhost:8080/api/quadras', {
+                    headers: {
+                        'userId': userId
+                    }
+                });
+            } else if (isProprietario) {
+                // Proprietário só vê suas próprias quadras
+                response = await axios.get(`http://localhost:8080/api/quadras/proprietario/${userId}`, {
+                    headers: {
+                        'userId': userId
+                    }
+                });
+            } else {
+                // Usuários comuns não deveriam estar aqui
+                setError('Acesso negado');
+                setLoading(false);
+                return;
+            }
+            
             setCourts(response.data);
             setLoading(false);
             console.log('Quadras carregadas:', response.data);
         } catch (error) {
             console.error('Erro ao buscar quadras:', error);
-            setError('Não foi possível carregar as quadras. Tente novamente mais tarde.');
+            if (error.response && error.response.status === 403) {
+                setError('Acesso negado. Você não tem permissão para visualizar essas quadras.');
+            } else {
+                setError('Não foi possível carregar as quadras. Tente novamente mais tarde.');
+            }
             setLoading(false);
-            
-            // Dados fictícios para demonstração caso a API falhe
-            const dummyCourts = [
-                { id: 1, nomeQuadra: 'Quadra Central', esporte: 'Futebol Society', cidade: 'São Paulo', bairro: 'Centro' },
-                { id: 2, nomeQuadra: 'Quadra Lateral', esporte: 'Vôlei de Praia', cidade: 'Rio de Janeiro', bairro: 'Copacabana' },
-                { id: 3, nomeQuadra: 'Ginásio Principal', esporte: 'Basquete', cidade: 'Belo Horizonte', bairro: 'Savassi' },
-            ];
-            setCourts(dummyCourts);
         }
     };
 
@@ -89,13 +105,17 @@ function MyCourts() {
             [name]: name === 'valorHora' ? parseFloat(value) : value
         });
     };
-    
-    // Função para salvar as alterações da quadra
+      // Função para salvar as alterações da quadra
     const handleSaveEdit = async () => {
         try {
             const response = await axios.put(
                 `http://localhost:8080/api/quadras/${currentCourt.idQuadra}`,
-                { ...currentCourt, ...editForm }
+                { ...currentCourt, ...editForm },
+                {
+                    headers: {
+                        'userId': userId
+                    }
+                }
             );
             
             if (response.status === 200) {
@@ -118,11 +138,14 @@ function MyCourts() {
         setCourtToDelete(court);
         setShowDeleteModal(true);
     };
-    
-    // Função para excluir a quadra
+      // Função para excluir a quadra
     const handleConfirmDelete = async () => {
         try {
-            const response = await axios.delete(`http://localhost:8080/api/quadras/${courtToDelete.idQuadra}`);
+            const response = await axios.delete(`http://localhost:8080/api/quadras/${courtToDelete.idQuadra}`, {
+                headers: {
+                    'userId': userId
+                }
+            });
             
             if (response.status === 204) {
                 // Remove a quadra excluída da lista

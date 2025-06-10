@@ -18,14 +18,28 @@ function Login() {
       [e.target.name]: e.target.value
     });
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post('http://localhost:8080/api/usuarios/login', formData);
       console.log('Login realizado:', response.data);
+      
+      // Armazena informações do usuário no localStorage
+      localStorage.setItem('userInfo', JSON.stringify(response.data));
+      localStorage.setItem('userId', response.data.user.idUser);
+      localStorage.setItem('userType', response.data.user.tipoCliente);
+      localStorage.setItem('canAccessWorkbench', response.data.canAccessWorkbench);
+      localStorage.setItem('isAdmin', response.data.isAdmin);
+      localStorage.setItem('isProprietario', response.data.isProprietario);
+      
       alert('Login realizado com sucesso!');
-      navigate('/workbench'); // Redireciona para a página de dashboard
+      
+      // Redireciona baseado no tipo de usuário
+      if (response.data.canAccessWorkbench) {
+        navigate('/workbench');
+      } else {
+        navigate('/'); // Usuários básicos voltam para a página inicial
+      }
     } catch (error) {
       console.error('Erro no login:', error);
       alert('Erro ao fazer login. Verifique suas credenciais.');

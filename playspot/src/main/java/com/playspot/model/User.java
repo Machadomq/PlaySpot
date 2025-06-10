@@ -19,11 +19,10 @@ public class User {
     private String passwordUser;
 
     @Column(name = "email_user", nullable = false, unique = true)
-    private String emailUser;
-
-    public enum TypeUser {
-        COMERCIO,
-        CLIENTE
+    private String emailUser;    public enum TypeUser {
+        CLIENTE,    // Usuário básico
+        COMERCIO,   // Proprietário de quadras  
+        ADMIN       // Administrador do sistema
     }
 
     @Enumerated(EnumType.STRING) // Persiste o enum como String no banco

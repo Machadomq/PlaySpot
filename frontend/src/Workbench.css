@@ -58,5 +58,27 @@
   background-color: #2f7747;
 }
 
+.logout-btn {
+  background-color: #dc3545 !important;
+  border-color: #dc3545 !important;
+}
+
+.logout-btn:hover {
+  background-color: #c82333 !important;
+  border-color: #bd2130 !important;
+}
+
+.user-info {
+  font-size: 16px;
+  font-weight: normal;
+  margin-right: 20px;
+}
+
+.user-info span {
+  padding: 5px 10px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+}
+
 
 

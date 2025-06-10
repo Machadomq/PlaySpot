@@ -15,6 +15,8 @@ import BookingsScreen from "./BookingsScreen.jsx";
 import FinancialScreen from "./FinancialScreen.jsx";
 import MyAccountScreen from "./MyAccountScreen.jsx";
 import SupportScreen from "./SupportScreen.jsx";
+import AdminPanel from "./AdminPanel.jsx";
+import { ProtectedRoute, ProtectedWorkbenchRoute, ProtectedAdminRoute } from './AuthComponents.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -26,14 +28,52 @@ createRoot(document.getElementById('root')).render(
         <Route path="/forgot-password" element={<ForgotPass />} />
         <Route path="/fp-confirmation" element={<FPConfirmation />} />
         <Route path="/register-confirmation" element={<RegisterConfirmation />} />
-        <Route path="/Workbench" element={<Workbench />} />
-        <Route path="/registration-courts" element={<RegistrationCourts />} />
-        <Route path="/MyCourts" element={<MyCourts/>} />
-        <Route path="/BookingsScreen" element={<BookingsScreen/>} />
-        <Route path="/FinancialScreen" element={<FinancialScreen />} />
-        <Route path="/my-account" element={<MyAccountScreen />} />
-        <Route path="/SupportScreen" element={<SupportScreen />} />
-        {/* Adicione outras rotas conforme necessário */}
+        
+        {/* Rotas protegidas para workbench (proprietários e admins) */}
+        <Route path="/Workbench" element={
+          <ProtectedWorkbenchRoute>
+            <Workbench />
+          </ProtectedWorkbenchRoute>
+        } />
+        <Route path="/registration-courts" element={
+          <ProtectedWorkbenchRoute>
+            <RegistrationCourts />
+          </ProtectedWorkbenchRoute>
+        } />
+        <Route path="/MyCourts" element={
+          <ProtectedWorkbenchRoute>
+            <MyCourts/>
+          </ProtectedWorkbenchRoute>
+        } />
+        <Route path="/BookingsScreen" element={
+          <ProtectedWorkbenchRoute>
+            <BookingsScreen/>
+          </ProtectedWorkbenchRoute>
+        } />
+        <Route path="/FinancialScreen" element={
+          <ProtectedWorkbenchRoute>
+            <FinancialScreen />
+          </ProtectedWorkbenchRoute>
+        } />
+        
+        {/* Rotas protegidas para usuários logados */}
+        <Route path="/my-account" element={
+          <ProtectedRoute>
+            <MyAccountScreen />
+          </ProtectedRoute>
+        } />
+        <Route path="/SupportScreen" element={
+          <ProtectedRoute>
+            <SupportScreen />
+          </ProtectedRoute>
+        } />
+        
+        {/* Rota protegida apenas para admins */}
+        <Route path="/AdminPanel" element={
+          <ProtectedAdminRoute>
+            <AdminPanel />
+          </ProtectedAdminRoute>
+        } />
       </Routes>
     </Router>
   </StrictMode>,
