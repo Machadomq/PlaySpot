@@ -2,21 +2,21 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './index.css';
-import App from './App.jsx';
-import Login from './Login.jsx';
-import RegisterPage from './RegisterPage.jsx';
-import ForgotPass from './ForgotPass.jsx';
-import FPConfirmation from './FPConfirmation.jsx';
-import RegisterConfirmation from './RegisterConfirmation.jsx';
-import Workbench from "./Workbench.jsx";
-import RegistrationCourts from "./RegistrationCourts.jsx";
-import MyCourts from "./MyCourts.jsx";
-import BookingsScreen from "./BookingsScreen.jsx";
-import FinancialScreen from "./FinancialScreen.jsx";
-import MyAccountScreen from "./MyAccountScreen.jsx";
-import SupportScreen from "./SupportScreen.jsx";
-import AdminPanel from "./AdminPanel.jsx";
-import { ProtectedRoute, ProtectedWorkbenchRoute, ProtectedAdminRoute } from './AuthComponents.jsx';
+import App from '../../App.jsx';
+import Login from '../both/Login.jsx';
+import RegisterPage from '../both/RegisterPage.jsx';
+import ForgotPass from '../both/ForgotPass.jsx';
+import FPConfirmation from '../both/FPConfirmation.jsx';
+import RegisterConfirmation from '../both/RegisterConfirmation.jsx';
+import Workbench from "../admin/Workbench.jsx";
+import RegistrationCourts from "../admin/RegistrationCourts.jsx";
+import MyCourts from "../admin/MyCourts.jsx";
+import BookingsScreen from "../admin/BookingsScreen.jsx";
+import FinancialScreen from "../admin/FinancialScreen.jsx";
+import MyAccountScreen from "../both/MyAccountScreen.jsx";
+import SupportScreen from "../both/SupportScreen.jsx";
+import AdminPanel from "../admin/AdminPanel.jsx";
+import { ProtectedRoute, ProtectedWorkbenchRoute, ProtectedAdminRoute } from '../both/AuthComponents.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

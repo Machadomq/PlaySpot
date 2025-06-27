@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useUserType } from './AuthComponents';
+import { useUserType } from '../both/AuthComponents';
 
 function Workbench() {
   const navigate = useNavigate();

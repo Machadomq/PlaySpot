@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { useUserType } from './AuthComponents';
+import { useUserType } from '../both/AuthComponents';
 
 function AdminPanel() {
   const navigate = useNavigate();

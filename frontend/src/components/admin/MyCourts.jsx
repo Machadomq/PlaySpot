@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { useUserType } from './AuthComponents';
+import { useUserType } from '../both/AuthComponents';
 
 function MyCourts() {
     const navigate = useNavigate();
