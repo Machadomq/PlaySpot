@@ -1,5 +1,3 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './RegistrationCourts.css';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -19,7 +17,7 @@ function RegistrationCourts() {
         rua: '',
         numero: '',
         cidade: '',
-        idProprietario: userId // Define automaticamente o proprietário
+        idProprietario: userId
     });
 
     const handleChange = (e) => {
@@ -60,135 +58,212 @@ function RegistrationCourts() {
     };
 
     return (
-        <div className="RegistrationCourtsContainer">
-            <header className="workbench-header">
-                <p className="titulo" onClick={() => navigate('/')}>PlaySpot</p>
+        <div className="min-h-screen bg-gray-900">
+            <header className="bg-gray-800 border-b border-gray-700">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="flex justify-between items-center h-16">
+                        <h1 
+                            className="text-2xl font-bold text-blue-400 cursor-pointer hover:text-blue-300 transition-colors"
+                            onClick={() => navigate('/')}
+                        >
+                            PlaySpot
+                        </h1>
+                    </div>
+                </div>
             </header>
 
-            <div className="hotbar-container">
-                <button className="hotbar-item" onClick={() => handleNavigation('/MyCourts')}>Minhas Quadras</button>
-                <button className="hotbar-item" onClick={() => handleNavigation('/Registration-courts')}>Cadastrar Quadra</button>
-                <button className="hotbar-item" onClick={() => handleNavigation('/BookingsScreen')}>Reservas</button>
-                <button className="hotbar-item" onClick={() => handleNavigation('/FinancialScreen')}>Financeiro</button>
-                <button className="hotbar-item" onClick={() => handleNavigation('/my-account')}>Minha conta</button>
-                <button className="hotbar-item" onClick={() => handleNavigation('/SupportScreen')}>Suporte</button>
-            </div>
+            <nav className="bg-gray-800 border-b border-gray-700">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="flex space-x-8 overflow-x-auto py-4">
+                        <button 
+                            className="whitespace-nowrap px-4 py-2 text-sm font-medium text-gray-300 hover:text-blue-400 hover:bg-gray-700 rounded-lg transition-colors"
+                            onClick={() => handleNavigation('/MyCourts')}
+                        >
+                            Minhas Quadras
+                        </button>
+                        <button 
+                            className="whitespace-nowrap px-4 py-2 text-sm font-medium text-blue-400 bg-gray-700 rounded-lg"
+                            onClick={() => handleNavigation('/Registration-courts')}
+                        >
+                            Cadastrar Quadra
+                        </button>
+                        <button 
+                            className="whitespace-nowrap px-4 py-2 text-sm font-medium text-gray-300 hover:text-blue-400 hover:bg-gray-700 rounded-lg transition-colors"
+                            onClick={() => handleNavigation('/BookingsScreen')}
+                        >
+                            Reservas
+                        </button>
+                        <button 
+                            className="whitespace-nowrap px-4 py-2 text-sm font-medium text-gray-300 hover:text-blue-400 hover:bg-gray-700 rounded-lg transition-colors"
+                            onClick={() => handleNavigation('/FinancialScreen')}
+                        >
+                            Financeiro
+                        </button>
+                        <button 
+                            className="whitespace-nowrap px-4 py-2 text-sm font-medium text-gray-300 hover:text-blue-400 hover:bg-gray-700 rounded-lg transition-colors"
+                            onClick={() => handleNavigation('/my-account')}
+                        >
+                            Minha conta
+                        </button>
+                        <button 
+                            className="whitespace-nowrap px-4 py-2 text-sm font-medium text-gray-300 hover:text-blue-400 hover:bg-gray-700 rounded-lg transition-colors"
+                            onClick={() => handleNavigation('/SupportScreen')}
+                        >
+                            Suporte
+                        </button>
+                    </div>
+                </div>
+            </nav>
 
-            <div className="workbench-content">
-                <h1 className="left-aligned">Cadastro de Quadra:</h1>
-                <p className="left-aligned">Preencha as informações e cadastre seu novo ponto de reserva</p>
-                <div className="linha-branca">­</div>
+            <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                <div className="mb-8">
+                    <h1 className="text-3xl font-bold text-white mb-2">Cadastro de Quadra</h1>
+                    <p className="text-gray-300">Preencha as informações e cadastre seu novo ponto de reserva</p>
+                </div>
 
-                <form className="registration-form" onSubmit={handleSubmit}>
-                    <div className="form-column">
-                        <div className="form-group">
-                            <input
-                                type="text"
-                                name="nomeQuadra"
-                                className="form-control"
-                                placeholder="Nome da Quadra"
-                                value={formData.nomeQuadra}
-                                onChange={handleChange}
-                            />
+                <div className="bg-gray-800 rounded-lg border border-gray-700 p-8">
+                    <form onSubmit={handleSubmit} className="space-y-6">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="space-y-6">
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-300 mb-2">Nome da Quadra</label>
+                                    <input
+                                        type="text"
+                                        name="nomeQuadra"
+                                        value={formData.nomeQuadra}
+                                        onChange={handleChange}
+                                        className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white placeholder-gray-400"
+                                        placeholder="Digite o nome da quadra"
+                                        required
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-300 mb-2">Esporte</label>
+                                    <input
+                                        type="text"
+                                        name="esporte"
+                                        value={formData.esporte}
+                                        onChange={handleChange}
+                                        className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white placeholder-gray-400"
+                                        placeholder="Ex: Futebol, Vôlei, Basquete"
+                                        required
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-300 mb-2">Valor por Hora (R$)</label>
+                                    <input
+                                        type="number"
+                                        name="valorHora"
+                                        value={formData.valorHora}
+                                        onChange={handleChange}
+                                        className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white placeholder-gray-400"
+                                        placeholder="0.00"
+                                        min="0"
+                                        step="0.01"
+                                        required
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-300 mb-2">Telefone</label>
+                                    <input
+                                        type="text"
+                                        name="telefone"
+                                        value={formData.telefone}
+                                        onChange={handleChange}
+                                        className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white placeholder-gray-400"
+                                        placeholder="(11) 99999-9999"
+                                        required
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-300 mb-2">CEP</label>
+                                    <input
+                                        type="text"
+                                        name="cep"
+                                        value={formData.cep}
+                                        onChange={handleChange}
+                                        className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white placeholder-gray-400"
+                                        placeholder="00000-000"
+                                        required
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="space-y-6">
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-300 mb-2">Estado</label>
+                                    <input
+                                        type="text"
+                                        name="estado"
+                                        value={formData.estado}
+                                        onChange={handleChange}
+                                        className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white placeholder-gray-400"
+                                        placeholder="Ex: São Paulo"
+                                        required
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-300 mb-2">Cidade</label>
+                                    <input
+                                        type="text"
+                                        name="cidade"
+                                        value={formData.cidade}
+                                        onChange={handleChange}
+                                        className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white placeholder-gray-400"
+                                        placeholder="Ex: Santos"
+                                        required
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-300 mb-2">Bairro</label>
+                                    <input
+                                        type="text"
+                                        name="bairro"
+                                        value={formData.bairro}
+                                        onChange={handleChange}
+                                        className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white placeholder-gray-400"
+                                        placeholder="Ex: Centro"
+                                        required
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-300 mb-2">Rua</label>
+                                    <input
+                                        type="text"
+                                        name="rua"
+                                        value={formData.rua}
+                                        onChange={handleChange}
+                                        className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white placeholder-gray-400"
+                                        placeholder="Ex: Rua das Flores"
+                                        required
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-300 mb-2">Número</label>
+                                    <input
+                                        type="text"
+                                        name="numero"
+                                        value={formData.numero}
+                                        onChange={handleChange}
+                                        className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white placeholder-gray-400"
+                                        placeholder="123"
+                                        required
+                                    />
+                                </div>
+                            </div>
                         </div>
-                        <div className="form-group">
-                            <input
-                                type="text"
-                                name="esporte"
-                                className="form-control"
-                                placeholder="Esporte"
-                                value={formData.esporte}
-                                onChange={handleChange}
-                            />
+
+                        <div className="flex justify-end pt-6">
+                            <button 
+                                type="submit" 
+                                className="px-8 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-medium"
+                            >
+                                Cadastrar Quadra
+                            </button>
                         </div>
-                        <div className="form-group">
-                            <input
-                                type="number"
-                                name="valorHora"
-                                className="form-control"
-                                placeholder="Valor da Hora"
-                                value={formData.valorHora}
-                                onChange={handleChange}
-                            />
-                        </div>
-                        <div className="form-group">
-                            <input
-                                type="text"
-                                name="telefone"
-                                className="form-control"
-                                placeholder="Telefone"
-                                value={formData.telefone}
-                                onChange={handleChange}
-                            />
-                        </div>
-                        <div className="form-group">
-                            <input
-                                type="text"
-                                name="cep"
-                                className="form-control"
-                                placeholder="CEP"
-                                value={formData.cep}
-                                onChange={handleChange}
-                            />
-                        </div>
-                    </div>
-                    <div className="form-column">
-                        <div className="form-group">
-                            <input
-                                type="text"
-                                name="estado"
-                                className="form-control"
-                                placeholder="Estado"
-                                value={formData.estado}
-                                onChange={handleChange}
-                            />
-                        </div>
-                        <div className="form-group">
-                            <input
-                                type="text"
-                                name="cidade"
-                                className="form-control"
-                                placeholder="Cidade"
-                                value={formData.cidade}
-                                onChange={handleChange}
-                            />
-                        </div>
-                        <div className="form-group">
-                            <input
-                                type="text"
-                                name="bairro"
-                                className="form-control"
-                                placeholder="Bairro"
-                                value={formData.bairro}
-                                onChange={handleChange}
-                            />
-                        </div>
-                        <div className="form-group">
-                            <input
-                                type="text"
-                                name="rua"
-                                className="form-control"
-                                placeholder="Rua"
-                                value={formData.rua}
-                                onChange={handleChange}
-                            />
-                        </div>
-                        <div className="form-group">
-                            <input
-                                type="text"
-                                name="numero"
-                                className="form-control"
-                                placeholder="Número"
-                                value={formData.numero}
-                                onChange={handleChange}
-                            />
-                        </div>
-                    </div>
-                    <div className="button-container">
-                        <button type="submit" className="btn btn-success">Cadastrar Quadra</button>
-                    </div>
-                </form>
-            </div>
+                    </form>
+                </div>
+            </main>
         </div>
     );
 }
