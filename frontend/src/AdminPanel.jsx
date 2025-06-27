@@ -69,86 +69,100 @@ function AdminPanel() {
   };
 
   if (loading) {
-    return <div className="container mt-4">Carregando...</div>;
+    return (
+      <div className="min-h-screen bg-gray-900 flex items-center justify-center">
+        <div className="text-white text-lg">Carregando...</div>
+      </div>
+    );
   }
 
   return (
-    <div className="container mt-4">
-      <div className="d-flex justify-content-between align-items-center mb-4">
-        <h2>Painel de Administração</h2>
-        <button className="btn btn-secondary" onClick={() => navigate('/workbench')}>
-          Voltar ao Workbench
-        </button>
-      </div>
-
-      <div className="card">
-        <div className="card-header">
-          <h4>Gerenciar Usuários</h4>
-        </div>
-        <div className="card-body">
-          <div className="table-responsive">
-            <table className="table table-striped">
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Nome</th>
-                  <th>Email</th>
-                  <th>Tipo</th>
-                  <th>Ações</th>
-                </tr>
-              </thead>
-              <tbody>
-                {users.map(user => (
-                  <tr key={user.idUser}>
-                    <td>{user.idUser}</td>
-                    <td>{user.nameUser}</td>
-                    <td>{user.emailUser}</td>
-                    <td>
-                      <span className={`badge ${
-                        user.tipoCliente === 'ADMIN' ? 'bg-danger' :
-                        user.tipoCliente === 'COMERCIO' ? 'bg-warning' : 'bg-info'
-                      }`}>
-                        {getUserTypeLabel(user.tipoCliente)}
-                      </span>
-                    </td>
-                    <td>
-                      <button 
-                        className="btn btn-sm btn-primary"
-                        onClick={() => setSelectedUser(user)}
-                        disabled={user.idUser === parseInt(userId)} // Não pode alterar próprio tipo
-                      >
-                        Alterar Tipo
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+    <div className="min-h-screen bg-gray-900">
+      <header className="bg-gray-800 border-b border-gray-700">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            <h1 className="text-2xl font-bold text-blue-400">Painel de Administração</h1>
+            <button 
+              className="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors text-sm font-medium"
+              onClick={() => navigate('/workbench')}
+            >
+              Voltar ao Workbench
+            </button>
           </div>
         </div>
-      </div>
+      </header>
 
-      {/* Modal para alterar tipo de usuário */}
-      {selectedUser && (
-        <div className="modal show" style={{display: 'block', backgroundColor: 'rgba(0,0,0,0.5)'}}>
-          <div className="modal-dialog">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title">Alterar Tipo de Usuário</h5>
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="bg-gray-800 rounded-lg border border-gray-700">
+          <div className="px-6 py-4 border-b border-gray-700">
+            <h4 className="text-lg font-semibold text-white">Gerenciar Usuários</h4>
+          </div>
+          <div className="p-6">
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead className="bg-gray-700">
+                  <tr>
+                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">ID</th>
+                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Nome</th>
+                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Email</th>
+                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Tipo</th>
+                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Ações</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-700">
+                  {users.map(user => (
+                    <tr key={user.idUser} className="hover:bg-gray-750">
+                      <td className="px-4 py-3 text-sm text-white">{user.idUser}</td>
+                      <td className="px-4 py-3 text-sm text-white">{user.nameUser}</td>
+                      <td className="px-4 py-3 text-sm text-white">{user.emailUser}</td>
+                      <td className="px-4 py-3 text-sm">
+                        <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                          user.tipoCliente === 'ADMIN' ? 'bg-red-900 text-red-200' :
+                          user.tipoCliente === 'COMERCIO' ? 'bg-yellow-900 text-yellow-200' : 'bg-blue-900 text-blue-200'
+                        }`}>
+                          {getUserTypeLabel(user.tipoCliente)}
+                        </span>
+                      </td>
+                      <td className="px-4 py-3 text-sm">
+                        <button 
+                          className="px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors text-xs font-medium disabled:bg-gray-600 disabled:cursor-not-allowed"
+                          onClick={() => setSelectedUser(user)}
+                          disabled={user.idUser === parseInt(userId)}
+                        >
+                          Alterar Tipo
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        {/* Modal para alterar tipo de usuário */}
+        {selectedUser && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+            <div className="bg-gray-800 rounded-lg border border-gray-700 max-w-md w-full">
+              <div className="px-6 py-4 border-b border-gray-700 flex justify-between items-center">
+                <h5 className="text-lg font-semibold text-white">Alterar Tipo de Usuário</h5>
                 <button 
-                  type="button" 
-                  className="btn-close"
+                  className="text-gray-400 hover:text-white"
                   onClick={() => {setSelectedUser(null); setNewUserType('');}}
-                ></button>
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
               </div>
-              <div className="modal-body">
-                <p><strong>Usuário:</strong> {selectedUser.nameUser}</p>
-                <p><strong>Tipo atual:</strong> {getUserTypeLabel(selectedUser.tipoCliente)}</p>
+              <div className="p-6">
+                <p className="text-gray-300 mb-2"><span className="font-medium text-white">Usuário:</span> {selectedUser.nameUser}</p>
+                <p className="text-gray-300 mb-4"><span className="font-medium text-white">Tipo atual:</span> {getUserTypeLabel(selectedUser.tipoCliente)}</p>
                 
-                <div className="mb-3">
-                  <label className="form-label">Novo tipo:</label>
+                <div className="mb-4">
+                  <label className="block text-sm font-medium text-gray-300 mb-2">Novo tipo:</label>
                   <select 
-                    className="form-select"
+                    className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white"
                     value={newUserType}
                     onChange={(e) => setNewUserType(e.target.value)}
                   >
@@ -159,17 +173,15 @@ function AdminPanel() {
                   </select>
                 </div>
               </div>
-              <div className="modal-footer">
+              <div className="px-6 py-4 border-t border-gray-700 flex justify-end space-x-3">
                 <button 
-                  type="button" 
-                  className="btn btn-secondary"
+                  className="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors"
                   onClick={() => {setSelectedUser(null); setNewUserType('');}}
                 >
                   Cancelar
                 </button>
                 <button 
-                  type="button" 
-                  className="btn btn-primary"
+                  className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
                   onClick={() => handleUpdateUserType(selectedUser)}
                 >
                   Salvar
@@ -177,8 +189,8 @@ function AdminPanel() {
               </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
+      </main>
     </div>
   );
 }

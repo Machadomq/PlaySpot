@@ -1,5 +1,3 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './Login.css';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -59,47 +57,86 @@ function Login() {
   };
 
   return (
-    <div className="UserProfile-container">
-      <header className="login-header">
-        <p className="titulo" onClick={handleTitleClick}>PlaySpot</p>
-      </header>
-      <div id='main'>
-        <div className="login-content">
-          <img src={userIcon1} alt="User Icon" className="userIcon1" />
-          <form className="login-form" onSubmit={handleSubmit}>
-            <div className="form-group">
+    <div className="min-h-screen bg-gray-900 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+      <div className="sm:mx-auto sm:w-full sm:max-w-md">
+        <h1 
+          className="text-center text-3xl font-bold text-blue-400 cursor-pointer hover:text-blue-300 transition-colors mb-8"
+          onClick={handleTitleClick}
+        >
+          PlaySpot
+        </h1>
+        <img 
+          src={userIcon1} 
+          alt="User Icon" 
+          className="mx-auto w-20 h-20 rounded-full shadow-lg mb-6" 
+        />
+        <h2 className="text-center text-2xl font-bold text-white mb-8">
+          Entre na sua conta
+        </h2>
+      </div>
+
+      <div className="sm:mx-auto sm:w-full sm:max-w-md">
+        <div className="bg-gray-800 py-8 px-4 border border-gray-700 rounded-lg sm:px-10">
+          <form className="space-y-6" onSubmit={handleSubmit}>
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+                Email
+              </label>
               <input
+                id="email"
                 type="email"
                 name="email"
-                className="form-control"
-                placeholder="Email"
+                required
+                className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white placeholder-gray-400"
+                placeholder="Digite seu email"
                 value={formData.email}
                 onChange={handleChange}
               />
             </div>
-            <div className="form-group">
+            <div>
+              <label htmlFor="senha" className="block text-sm font-medium text-gray-300 mb-2">
+                Senha
+              </label>
               <input
+                id="senha"
                 type="password"
                 name="senha"
-                className="form-control"
-                placeholder="Senha"
+                required
+                className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white placeholder-gray-400"
+                placeholder="Digite sua senha"
                 value={formData.senha}
                 onChange={handleChange}
               />
             </div>
-            <div className="form-group">
+            
+            <div className="text-right">
               <button
                 type="button"
-                className="btn btn-link forgot-password"
+                className="text-sm text-blue-400 hover:text-blue-300 transition-colors"
                 onClick={handleForgotPasswordClick}
               >
                 Esqueceu a senha?
               </button>
             </div>
-            <button type="submit" className="btn btn-primary">Entrar</button>
+            
+            <button 
+              type="submit" 
+              className="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 font-medium transition-colors"
+            >
+              Entrar
+            </button>
           </form>
-          <div className="signup-link">
-            <p>Não possui conta? <button onClick={handleRegisterClick} className="btn btn-link">Cadastre-se</button></p>
+          
+          <div className="mt-6 text-center">
+            <p className="text-gray-300">
+              Não possui conta? 
+              <button 
+                onClick={handleRegisterClick} 
+                className="ml-1 text-blue-400 hover:text-blue-300 font-medium transition-colors"
+              >
+                Cadastre-se
+              </button>
+            </p>
           </div>
         </div>
       </div>

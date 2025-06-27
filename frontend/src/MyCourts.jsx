@@ -1,11 +1,6 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './MyCourts.css';
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
 import { useUserType } from './AuthComponents';
 
 function MyCourts() {
@@ -33,7 +28,9 @@ function MyCourts() {
 
     // Estado para o modal de confirmação de exclusão
     const [showDeleteModal, setShowDeleteModal] = useState(false);
-    const [courtToDelete, setCourtToDelete] = useState(null);    useEffect(() => {
+    const [courtToDelete, setCourtToDelete] = useState(null);
+
+    useEffect(() => {
         fetchCourts();
     }, []);
       const fetchCourts = async () => {
@@ -161,209 +158,291 @@ function MyCourts() {
     };
 
     return (
-        <div className="MyCourtsContainer">
-            {/* Cabeçalho Padrão */}
-            <header className="workbench-header">
-                <p className="titulo" onClick={() => navigate('/')}>PlaySpot</p>
-                {/* Adicionar ícone de usuário ou outras informações se necessário */}
+        <div className="min-h-screen bg-gray-900">
+            <header className="bg-gray-800 border-b border-gray-700">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="flex justify-between items-center h-16">
+                        <h1 
+                            className="text-2xl font-bold text-blue-400 cursor-pointer hover:text-blue-300 transition-colors"
+                            onClick={() => navigate('/')}
+                        >
+                            PlaySpot
+                        </h1>
+                    </div>
+                </div>
             </header>
 
-            {/* Barra Lateral Padrão */}
-            <div className="hotbar-container">
-                <button className="hotbar-item active" onClick={() => handleNavigation('/MyCourts')}>Minhas Quadras</button>
-                <button className="hotbar-item" onClick={() => handleNavigation('/Registration-courts')}>Cadastrar Quadra</button>
-                <button className="hotbar-item" onClick={() => handleNavigation('/BookingsScreen')}>Reservas</button>
-                <button className="hotbar-item" onClick={() => handleNavigation('/FinancialScreen')}>Financeiro</button>
-                <button className="hotbar-item" onClick={() => handleNavigation('/my-account')}>Minha conta</button>
-                <button className="hotbar-item" onClick={() => handleNavigation('/SupportScreen')}>Suporte</button>
-            </div>
+            <nav className="bg-gray-800 border-b border-gray-700">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="flex space-x-8 overflow-x-auto py-4">
+                        <button 
+                            className="whitespace-nowrap px-4 py-2 text-sm font-medium text-blue-400 bg-gray-700 rounded-lg"
+                            onClick={() => handleNavigation('/MyCourts')}
+                        >
+                            Minhas Quadras
+                        </button>
+                        <button 
+                            className="whitespace-nowrap px-4 py-2 text-sm font-medium text-gray-300 hover:text-blue-400 hover:bg-gray-700 rounded-lg transition-colors"
+                            onClick={() => handleNavigation('/Registration-courts')}
+                        >
+                            Cadastrar Quadra
+                        </button>
+                        <button 
+                            className="whitespace-nowrap px-4 py-2 text-sm font-medium text-gray-300 hover:text-blue-400 hover:bg-gray-700 rounded-lg transition-colors"
+                            onClick={() => handleNavigation('/BookingsScreen')}
+                        >
+                            Reservas
+                        </button>
+                        <button 
+                            className="whitespace-nowrap px-4 py-2 text-sm font-medium text-gray-300 hover:text-blue-400 hover:bg-gray-700 rounded-lg transition-colors"
+                            onClick={() => handleNavigation('/FinancialScreen')}
+                        >
+                            Financeiro
+                        </button>
+                        <button 
+                            className="whitespace-nowrap px-4 py-2 text-sm font-medium text-gray-300 hover:text-blue-400 hover:bg-gray-700 rounded-lg transition-colors"
+                            onClick={() => handleNavigation('/my-account')}
+                        >
+                            Minha conta
+                        </button>
+                        <button 
+                            className="whitespace-nowrap px-4 py-2 text-sm font-medium text-gray-300 hover:text-blue-400 hover:bg-gray-700 rounded-lg transition-colors"
+                            onClick={() => handleNavigation('/SupportScreen')}
+                        >
+                            Suporte
+                        </button>
+                    </div>
+                </div>
+            </nav>
 
-            {/* Conteúdo Principal */}
-            <div className="workbench-content">
-                <h1 className="left-aligned">Minhas Quadras</h1>
-                <p className="left-aligned">Gerencie suas quadras cadastradas.</p>
-                <div className="linha-branca">­</div>
+            <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                <div className="mb-8">
+                    <h1 className="text-3xl font-bold text-white mb-2">Minhas Quadras</h1>
+                    <p className="text-gray-300">Gerencie suas quadras cadastradas.</p>
+                </div>
                 
-                <div className="courts-list-container">
+                <div className="space-y-6">
                     {loading ? (
-                        <p className="loading-message">Carregando quadras...</p>
+                        <div className="bg-gray-800 rounded-lg border border-gray-700 p-8 text-center">
+                            <p className="text-gray-500">Carregando quadras...</p>
+                        </div>
                     ) : error ? (
-                        <p className="error-message">{error}</p>                    ) : courts.length > 0 ? (
-                        courts.map(court => (
-                            <div key={court.idQuadra} className="court-card">
-                                <h2>{court.nomeQuadra}</h2>
-                                <p><strong>Esporte:</strong> {court.esporte}</p>
-                                <p><strong>Localização:</strong> {court.cidade} - {court.bairro}</p>
-                                <p><strong>Valor/hora:</strong> R$ {court.valorHora?.toFixed(2)}</p><div className="card-actions">
-                                    <button 
-                                        className="btn btn-sm btn-primary" 
-                                        onClick={() => handleEditCourt(court)}
-                                    >
-                                        Editar
-                                    </button>
-                                    <button 
-                                        className="btn btn-sm btn-danger"
-                                        onClick={() => handleDeleteClick(court)}
-                                    >
-                                        Excluir
-                                    </button>
+                        <div className="bg-red-900 border border-red-700 rounded-lg p-4">
+                            <p className="text-red-200">{error}</p>
+                        </div>
+                    ) : courts.length > 0 ? (
+                        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                            {courts.map(court => (
+                                <div key={court.idQuadra} className="bg-gray-800 rounded-lg shadow-sm border border-gray-700 p-6 hover:shadow-md transition-shadow">
+                                    <h2 className="text-xl font-semibold text-white mb-4">{court.nomeQuadra}</h2>
+                                    <div className="space-y-2 mb-4">
+                                        <p className="text-sm text-gray-300">
+                                            <span className="font-medium">Esporte:</span> {court.esporte}
+                                        </p>
+                                        <p className="text-sm text-gray-300">
+                                            <span className="font-medium">Localização:</span> {court.cidade} - {court.bairro}
+                                        </p>
+                                        <p className="text-sm text-gray-300">
+                                            <span className="font-medium">Valor/hora:</span> R$ {court.valorHora?.toFixed(2)}
+                                        </p>
+                                    </div>
+                                    <div className="flex space-x-2">
+                                        <button 
+                                            className="flex-1 px-3 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
+                                            onClick={() => handleEditCourt(court)}
+                                        >
+                                            Editar
+                                        </button>
+                                        <button 
+                                            className="flex-1 px-3 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors text-sm font-medium"
+                                            onClick={() => handleDeleteClick(court)}
+                                        >
+                                            Excluir
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
-                        ))
+                            ))}
+                        </div>
                     ) : (
-                        <p>Nenhuma quadra cadastrada ainda.</p>
+                        <div className="bg-gray-800 rounded-lg border border-gray-700 p-8 text-center">
+                            <p className="text-gray-500">Nenhuma quadra cadastrada ainda.</p>
+                        </div>
                     )}
-                </div>            </div>
+                </div>
+            </main>
             
             {/* Modal de Edição */}
-            <Modal show={showEditModal} onHide={() => setShowEditModal(false)} backdrop="static" centered>
-                <Modal.Header closeButton>
-                    <Modal.Title>Editar Quadra</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <Form>
-                        <Form.Group className="mb-3">
-                            <Form.Label>Nome da Quadra</Form.Label>
-                            <Form.Control 
-                                type="text" 
-                                name="nomeQuadra" 
-                                value={editForm.nomeQuadra || ''} 
-                                onChange={handleEditFormChange} 
-                                required 
-                            />
-                        </Form.Group>
-                        
-                        <Form.Group className="mb-3">
-                            <Form.Label>Esporte</Form.Label>
-                            <Form.Control 
-                                type="text" 
-                                name="esporte" 
-                                value={editForm.esporte || ''} 
-                                onChange={handleEditFormChange} 
-                                required 
-                            />
-                        </Form.Group>
-                        
-                        <Form.Group className="mb-3">
-                            <Form.Label>Estado</Form.Label>
-                            <Form.Control 
-                                type="text" 
-                                name="estado" 
-                                value={editForm.estado || ''} 
-                                onChange={handleEditFormChange} 
-                                required 
-                            />
-                        </Form.Group>
-                        
-                        <Form.Group className="mb-3">
-                            <Form.Label>Cidade</Form.Label>
-                            <Form.Control 
-                                type="text" 
-                                name="cidade" 
-                                value={editForm.cidade || ''} 
-                                onChange={handleEditFormChange} 
-                                required 
-                            />
-                        </Form.Group>
-                        
-                        <Form.Group className="mb-3">
-                            <Form.Label>Bairro</Form.Label>
-                            <Form.Control 
-                                type="text" 
-                                name="bairro" 
-                                value={editForm.bairro || ''} 
-                                onChange={handleEditFormChange} 
-                                required 
-                            />
-                        </Form.Group>
-                        
-                        <Form.Group className="mb-3">
-                            <Form.Label>Rua</Form.Label>
-                            <Form.Control 
-                                type="text" 
-                                name="rua" 
-                                value={editForm.rua || ''} 
-                                onChange={handleEditFormChange} 
-                                required 
-                            />
-                        </Form.Group>
-                        
-                        <Form.Group className="mb-3">
-                            <Form.Label>Número</Form.Label>
-                            <Form.Control 
-                                type="text" 
-                                name="numero" 
-                                value={editForm.numero || ''} 
-                                onChange={handleEditFormChange} 
-                                required 
-                            />
-                        </Form.Group>
-                        
-                        <Form.Group className="mb-3">
-                            <Form.Label>CEP</Form.Label>
-                            <Form.Control 
-                                type="text" 
-                                name="cep" 
-                                value={editForm.cep || ''} 
-                                onChange={handleEditFormChange} 
-                                required 
-                            />
-                        </Form.Group>
-                        
-                        <Form.Group className="mb-3">
-                            <Form.Label>Telefone</Form.Label>
-                            <Form.Control 
-                                type="text" 
-                                name="telefone" 
-                                value={editForm.telefone || ''} 
-                                onChange={handleEditFormChange} 
-                                required 
-                            />
-                        </Form.Group>
-                        
-                        <Form.Group className="mb-3">
-                            <Form.Label>Valor por Hora</Form.Label>
-                            <Form.Control 
-                                type="number" 
-                                name="valorHora" 
-                                value={editForm.valorHora || 0} 
-                                onChange={handleEditFormChange} 
-                                min="0" 
-                                step="0.01" 
-                                required 
-                            />
-                        </Form.Group>
-                    </Form>
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={() => setShowEditModal(false)}>
-                        Cancelar
-                    </Button>
-                    <Button variant="primary" onClick={handleSaveEdit}>
-                        Salvar Alterações
-                    </Button>
-                </Modal.Footer>
-            </Modal>
+            {showEditModal && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+                    <div className="bg-gray-800 rounded-lg border border-gray-700 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+                        <div className="p-6 border-b border-gray-700">
+                            <h2 className="text-xl font-semibold text-white">Editar Quadra</h2>
+                        </div>
+                        <div className="p-6">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-300 mb-2">Nome da Quadra</label>
+                                    <input
+                                        type="text"
+                                        name="nomeQuadra"
+                                        value={editForm.nomeQuadra || ''}
+                                        onChange={handleEditFormChange}
+                                        className="w-full px-3 py-2 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-900 text-white"
+                                        required
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-300 mb-2">Esporte</label>
+                                    <input
+                                        type="text"
+                                        name="esporte"
+                                        value={editForm.esporte || ''}
+                                        onChange={handleEditFormChange}
+                                        className="w-full px-3 py-2 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-900 text-white"
+                                        required
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-300 mb-2">Estado</label>
+                                    <input
+                                        type="text"
+                                        name="estado"
+                                        value={editForm.estado || ''}
+                                        onChange={handleEditFormChange}
+                                        className="w-full px-3 py-2 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-900 text-white"
+                                        required
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-300 mb-2">Cidade</label>
+                                    <input
+                                        type="text"
+                                        name="cidade"
+                                        value={editForm.cidade || ''}
+                                        onChange={handleEditFormChange}
+                                        className="w-full px-3 py-2 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-900 text-white"
+                                        required
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-300 mb-2">Bairro</label>
+                                    <input
+                                        type="text"
+                                        name="bairro"
+                                        value={editForm.bairro || ''}
+                                        onChange={handleEditFormChange}
+                                        className="w-full px-3 py-2 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-900 text-white"
+                                        required
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-300 mb-2">Rua</label>
+                                    <input
+                                        type="text"
+                                        name="rua"
+                                        value={editForm.rua || ''}
+                                        onChange={handleEditFormChange}
+                                        className="w-full px-3 py-2 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-900 text-white"
+                                        required
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-300 mb-2">Número</label>
+                                    <input
+                                        type="text"
+                                        name="numero"
+                                        value={editForm.numero || ''}
+                                        onChange={handleEditFormChange}
+                                        className="w-full px-3 py-2 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-900 text-white"
+                                        required
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-300 mb-2">CEP</label>
+                                    <input
+                                        type="text"
+                                        name="cep"
+                                        value={editForm.cep || ''}
+                                        onChange={handleEditFormChange}
+                                        className="w-full px-3 py-2 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-900 text-white"
+                                        required
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-300 mb-2">Telefone</label>
+                                    <input
+                                        type="text"
+                                        name="telefone"
+                                        value={editForm.telefone || ''}
+                                        onChange={handleEditFormChange}
+                                        className="w-full px-3 py-2 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-900 text-white"
+                                        required
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-300 mb-2">Valor por Hora</label>
+                                    <input
+                                        type="number"
+                                        name="valorHora"
+                                        value={editForm.valorHora || 0}
+                                        onChange={handleEditFormChange}
+                                        className="w-full px-3 py-2 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-900 text-white"
+                                        min="0"
+                                        step="0.01"
+                                        required
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div className="p-6 border-t border-gray-700 flex justify-end space-x-3">
+                            <button
+                                className="px-4 py-2 bg-gray-700 text-gray-300 rounded-lg hover:bg-gray-600 transition-colors"
+                                onClick={() => setShowEditModal(false)}
+                            >
+                                Cancelar
+                            </button>
+                            <button
+                                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                                onClick={handleSaveEdit}
+                            >
+                                Salvar Alterações
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
             
             {/* Modal de Confirmação de Exclusão */}
-            <Modal show={showDeleteModal} onHide={() => setShowDeleteModal(false)} centered>
-                <Modal.Header closeButton>
-                    <Modal.Title>Confirmar Exclusão</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    {courtToDelete && (
-                        <p>Tem certeza que deseja excluir a quadra <strong>{courtToDelete.nomeQuadra}</strong>? Esta ação não pode ser desfeita.</p>
-                    )}
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={() => setShowDeleteModal(false)}>
-                        Cancelar
-                    </Button>
-                    <Button variant="danger" onClick={handleConfirmDelete}>
-                        Excluir
-                    </Button>
-                </Modal.Footer>
-            </Modal>
+            {showDeleteModal && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+                    <div className="bg-gray-800 rounded-lg shadow-lg max-w-md w-full">
+                        <div className="p-6 border-b border-gray-700">
+                            <h2 className="text-xl font-semibold text-white">Confirmar Exclusão</h2>
+                        </div>
+                        <div className="p-6">
+                            {courtToDelete && (
+                                <p className="text-gray-300">
+                                    Tem certeza que deseja excluir a quadra <strong>{courtToDelete.nomeQuadra}</strong>? Esta ação não pode ser desfeita.
+                                </p>
+                            )}
+                        </div>
+                        <div className="p-6 border-t border-gray-700 flex justify-end space-x-3">
+                            <button
+                                className="px-4 py-2 bg-gray-700 text-gray-300 rounded-lg hover:bg-gray-600 transition-colors"
+                                onClick={() => setShowDeleteModal(false)}
+                            >
+                                Cancelar
+                            </button>
+                            <button
+                                className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+                                onClick={handleConfirmDelete}
+                            >
+                                Excluir
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

@@ -35,7 +35,17 @@ createRoot(document.getElementById('root')).render(
             <Workbench />
           </ProtectedWorkbenchRoute>
         } />
+        <Route path="/workbench" element={
+          <ProtectedWorkbenchRoute>
+            <Workbench />
+          </ProtectedWorkbenchRoute>
+        } />
         <Route path="/registration-courts" element={
+          <ProtectedWorkbenchRoute>
+            <RegistrationCourts />
+          </ProtectedWorkbenchRoute>
+        } />
+        <Route path="/Registration-courts" element={
           <ProtectedWorkbenchRoute>
             <RegistrationCourts />
           </ProtectedWorkbenchRoute>
