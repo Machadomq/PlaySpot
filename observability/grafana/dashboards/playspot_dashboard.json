@@ -1,0 +1,44 @@
+{
+  "annotations": {"list": []},
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [],
+  "panels": [
+    {
+      "type": "stat",
+      "title": "DB Up",
+      "targets": [{"expr": "playspot_db_up", "refId": "A"}],
+      "gridPos": {"x": 0, "y": 0, "w": 6, "h": 4}
+    },
+    {
+      "type": "timeseries",
+      "title": "JVM Memory Used",
+      "targets": [{"expr": "jvm_memory_used_bytes", "refId": "A"}],
+      "gridPos": {"x": 6, "y": 0, "w": 12, "h": 4}
+    },
+    {
+      "type": "timeseries",
+      "title": "Process CPU",
+      "targets": [{"expr": "process_cpu_usage", "refId": "A"}],
+      "gridPos": {"x": 0, "y": 4, "w": 9, "h": 4}
+    },
+    {
+      "type": "timeseries",
+      "title": "HTTP Request Duration (seconds)",
+      "targets": [{"expr": "http_server_requests_seconds_sum / http_server_requests_seconds_count", "refId": "A"}],
+      "gridPos": {"x": 9, "y": 4, "w": 9, "h": 4}
+    }
+  ],
+  "schemaVersion": 26,
+  "style": "dark",
+  "tags": [],
+  "templating": {"list": []},
+  "time": {"from": "now-6h", "to": "now"},
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "Playspot Overview",
+  "uid": null,
+  "version": 1
+}

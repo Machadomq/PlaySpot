@@ -11,17 +11,11 @@ function App() {
   const [searchTerm, setSearchTerm] = useState('');
   const navigate = useNavigate();
 
-  // Carregar a mensagem da API
+  // Carregar uma mensagem simples e as quadras reais da API
   useEffect(() => {
-    fetch("http://localhost:8083/api/exemplo")
-      .then(response => response.json())
-      .then(data => setMensagem(data.mensagem))
-      .catch(error => console.error("Erro ao buscar dados:", error));
-  }, []);
+    setMensagem('Veja as quadras cadastradas e faça seu acesso ao sistema.');
 
-  // Carregar as quadras da API
-  useEffect(() => {
-    fetch('http://localhost:3000/courts') // alterar pro localhost certo
+    fetch('http://localhost:8080/api/quadras/public')
       .then(response => response.json())
       .then(data => setCourts(data))
       .catch(error => console.error('Erro ao buscar quadras:', error));
@@ -32,7 +26,7 @@ function App() {
   };
 
   const filteredCourts = courts.filter(court =>
-    court.name.toLowerCase().includes(searchTerm.toLowerCase())
+    (court.nomeQuadra || '').toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const handleUserIconClick = () => {
@@ -49,7 +43,7 @@ function App() {
       <div className='container'>
         <img src={logo} alt='Logo PlaySpot' className='logo' />
         <h2>Encontre sua próxima Quadra</h2>
-        <p>{mensagem}</p> {/* Mensagem vinda do backend */}
+        <p>{mensagem}</p>
 
         <div className="search-bar">
           <input
@@ -65,10 +59,10 @@ function App() {
         <h3>Locais Próximos:</h3>
         <div className='courts-grid'>
           {filteredCourts.map(court => (
-            <div key={court.id} className='court-card'>
-              <img src={court.imageUrl} alt={court.name} className='court-image' />
-              <p className='court-price'>{court.price}</p>
-              <p className='court-name'>{court.name}</p>
+            <div key={court.idQuadra} className='court-card'>
+              <img src={logo} alt={court.nomeQuadra} className='court-image' />
+              <p className='court-price'>R$ {Number(court.valorHora || 0).toFixed(2)}</p>
+              <p className='court-name'>{court.nomeQuadra}</p>
             </div>
           ))}
         </div>

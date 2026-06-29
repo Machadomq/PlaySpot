@@ -11,8 +11,9 @@ public class Quadra {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idQuadra;
 
-    @Column(name = "id_proprietario", nullable = false)
-    private int idProprietario;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_proprietario", nullable = false)
+    private User proprietario;
 
     @Column(name = "nome_quadra", nullable = false, length = 100)
     private String nomeQuadra;
@@ -61,7 +62,6 @@ public class Quadra {
             String esporte,
             String telefone,
             float valorHora) {
-
         validarId(idProprietario, "O id do proprietário é obrigatório e deve ser positivo.");
         validarCampo(nomeQuadra, "O nome da quadra não pode estar vazio.");
         validarCampo(estado, "O estado não pode estar vazio.");
@@ -74,7 +74,8 @@ public class Quadra {
         validarCampo(telefone, "O telefone não pode estar vazio.");
         validarValorHora(valorHora);
 
-        this.idProprietario = idProprietario;
+        this.proprietario = new User();
+        this.proprietario.setIdUser(idProprietario);
         this.nomeQuadra = nomeQuadra;
         this.estado = estado;
         this.cidade = cidade;
@@ -97,12 +98,21 @@ public class Quadra {
     }
 
     public int getIdProprietario() {
-        return idProprietario;
+        return proprietario != null ? proprietario.getIdUser() : 0;
     }
 
     public void setIdProprietario(int idProprietario) {
         validarId(idProprietario, "O id do proprietário deve ser positivo.");
-        this.idProprietario = idProprietario;
+        if (this.proprietario == null) this.proprietario = new User();
+        this.proprietario.setIdUser(idProprietario);
+    }
+
+    public User getProprietario() {
+        return proprietario;
+    }
+
+    public void setProprietario(User proprietario) {
+        this.proprietario = proprietario;
     }
 
     public String getNomeQuadra() {

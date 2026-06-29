@@ -9,19 +9,30 @@ function BookingsScreen() {
     const [bookingHistory, setBookingHistory] = useState([]);
     const [historyFilters, setHistoryFilters] = useState({ date: '', status: '' });
 
-    // Simulação de dados (substituir pela chamada real à API)
+    // Busca reservas reais da API para o usuário autenticado
     useEffect(() => {
-        const dummyCurrentBookings = [
-            { id: 1, courtName: 'Quadra Alpha', date: '2025-05-10', time: '18:00', status: 'Confirmada', value: 'R$ 50,00' },
-            { id: 2, courtName: 'Quadra Beta', date: '2025-05-12', time: '19:00', status: 'Pendente', value: 'R$ 75,00' },
-        ];
-        const dummyBookingHistory = [
-            { id: 3, courtName: 'Quadra Gamma', date: '2025-04-20', time: '20:00', status: 'Concluída', value: 'R$ 60,00' },
-            { id: 4, courtName: 'Quadra Alpha', date: '2025-04-15', time: '17:00', status: 'Cancelada', value: 'R$ 50,00' },
-            { id: 5, courtName: 'Quadra Delta', date: '2025-03-30', time: '10:00', status: 'Concluída', value: 'R$ 90,00' },
-        ];
-        setCurrentBookings(dummyCurrentBookings);
-        setBookingHistory(dummyBookingHistory);
+        const userId = localStorage.getItem('userId');
+        if (!userId) return;
+
+        fetch(`http://localhost:8080/api/reservas/usuario/${userId}`)
+            .then(response => response.json())
+            .then(data => {
+                const mapped = (data || []).map(r => ({
+                    id: r.reservaId,
+                    courtName: r.quadra?.nomeQuadra || 'Quadra',
+                    date: r.dataReserva ? new Date(r.dataReserva).toLocaleDateString('pt-BR') : '',
+                    time: r.horarioInicio ? r.horarioInicio : '',
+                    status: r.status || '',
+                    value: r.valorTotal ? `R$ ${Number(r.valorTotal).toFixed(2).replace('.', ',')}` : ''
+                }));
+
+                const current = mapped.filter(b => b.status !== 'CANCELADA');
+                setCurrentBookings(current);
+                setBookingHistory(mapped);
+            })
+            .catch(err => {
+                console.error('Erro ao buscar reservas:', err);
+            });
     }, []);
 
     const handleNavigation = (path) => {
@@ -49,12 +60,12 @@ function BookingsScreen() {
             </header>
 
             <div className="hotbar-container">
-                <button className="hotbar-item" onClick={() => handleNavigation('/MyCourts')}>Minhas Quadras</button>
-                <button className="hotbar-item" onClick={() => handleNavigation('/Registration-courts')}>Cadastrar Quadra</button>
-                <button className="hotbar-item" onClick={() => handleNavigation('/BookingsScreen')}>Reservas</button>
-                <button className="hotbar-item" onClick={() => handleNavigation('/FinancialScreen')}>Financeiro</button>
+                <button className="hotbar-item" onClick={() => handleNavigation('/my-courts')}>Minhas Quadras</button>
+                <button className="hotbar-item" onClick={() => handleNavigation('/registration-courts')}>Cadastrar Quadra</button>
+                <button className="hotbar-item" onClick={() => handleNavigation('/bookings')}>Reservas</button>
+                <button className="hotbar-item" onClick={() => handleNavigation('/financial')}>Financeiro</button>
                 <button className="hotbar-item" onClick={() => handleNavigation('/my-account')}>Minha conta</button>
-                <button className="hotbar-item" onClick={() => handleNavigation('/SupportScreen')}>Suporte</button>
+                <button className="hotbar-item" onClick={() => handleNavigation('/support')}>Suporte</button>
             </div>
 
             <div className="workbench-content">

@@ -27,7 +27,7 @@ public class QuadraService {
     
     // Método para buscar quadras pelo ID do proprietário
     public List<Quadra> findByIdProprietario(int idProprietario) {
-        return quadraRepository.findByIdProprietario(idProprietario);
+        return quadraRepository.findByProprietario_IdUser(idProprietario);
     }
     
     // Método para buscar uma quadra pelo ID

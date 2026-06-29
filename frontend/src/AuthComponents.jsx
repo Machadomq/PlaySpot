@@ -31,7 +31,7 @@ export const ProtectedRoute = ({ children }) => {
   
   if (!userId) {
     alert('Você precisa fazer login para acessar esta página.');
-    return <Navigate to="/Login" replace />;
+    return <Navigate to="/login" replace />;
   }
   
   return children;

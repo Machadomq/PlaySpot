@@ -7,33 +7,33 @@ function FinancialScreen() {
     const navigate = useNavigate();
     const [monthlyData, setMonthlyData] = useState({});
     const [selectedMonth, setSelectedMonth] = useState(''); // Formato YYYY-MM
+    const [totalEarnings, setTotalEarnings] = useState(0);
 
-    // Simulação de dados financeiros (substituir pela chamada real à API)
+    // Busca soma financeira do proprietário (total arrecadado)
     useEffect(() => {
-        const dummyFinancialData = {
-            '2025-05': {
-                totalMonth: 4200.00,
-                weeklyTotals: [1300.00, 1350.00, 900.00, 750.00],
-                transactions: [
-                    { id: 1, date: '2025-05-02', description: 'Reserva Quadra Alpha', amount: 50.00 },
-                    { id: 2, date: '2025-05-05', description: 'Reserva Quadra Beta', amount: 75.00 },
-                    // ... mais transações
-                ]
-            },
-            '2025-04': {
-                totalMonth: 4550.00,
-                weeklyTotals: [1250.00, 1400.00, 950.00, 850.00],
-                transactions: [
-                    { id: 3, date: '2025-04-10', description: 'Reserva Quadra Gamma', amount: 60.00 },
-                    // ... mais transações
-                ]
-            }
-        };
-        // Define o mês atual como padrão ou o último mês com dados
-        const today = new Date();
-        const currentMonthYear = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}`;
-        setSelectedMonth(dummyFinancialData[currentMonthYear] ? currentMonthYear : Object.keys(dummyFinancialData)[0] || '');
-        setMonthlyData(dummyFinancialData);
+        const userId = localStorage.getItem('userId');
+        if (!userId) return;
+
+        // Pega total arrecadado do backend
+        fetch(`http://localhost:8080/api/reservas/proprietario/${userId}/financeiro`)
+            .then(response => response.json())
+            .then(data => {
+                const total = data?.totalArrecadado || 0;
+                setTotalEarnings(Number(total));
+
+                // Popula monthlyData com um node simples que usa totalEarnings no cartão principal
+                const today = new Date();
+                const currentMonthYear = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}`;
+                setSelectedMonth(currentMonthYear);
+                setMonthlyData({
+                    [currentMonthYear]: {
+                        totalMonth: Number(total),
+                        weeklyTotals: [],
+                        transactions: []
+                    }
+                });
+            })
+            .catch(err => console.error('Erro ao buscar financeiro:', err));
     }, []);
 
     const handleNavigation = (path) => {
@@ -53,12 +53,12 @@ function FinancialScreen() {
             </header>
 
             <div className="hotbar-container">
-                <button className="hotbar-item" onClick={() => handleNavigation('/MyCourts')}>Minhas Quadras</button>
-                <button className="hotbar-item" onClick={() => handleNavigation('/Registration-courts')}>Cadastrar Quadra</button>
-                <button className="hotbar-item" onClick={() => handleNavigation('/BookingsScreen')}>Reservas</button>
-                <button className="hotbar-item" onClick={() => handleNavigation('/FinancialScreen')}>Financeiro</button>
+                <button className="hotbar-item" onClick={() => handleNavigation('/my-courts')}>Minhas Quadras</button>
+                <button className="hotbar-item" onClick={() => handleNavigation('/registration-courts')}>Cadastrar Quadra</button>
+                <button className="hotbar-item" onClick={() => handleNavigation('/bookings')}>Reservas</button>
+                <button className="hotbar-item" onClick={() => handleNavigation('/financial')}>Financeiro</button>
                 <button className="hotbar-item" onClick={() => handleNavigation('/my-account')}>Minha conta</button>
-                <button className="hotbar-item" onClick={() => handleNavigation('/SupportScreen')}>Suporte</button>
+                <button className="hotbar-item" onClick={() => handleNavigation('/support')}>Suporte</button>
             </div>
 
             <div className="workbench-content">

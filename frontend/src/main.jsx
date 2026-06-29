@@ -30,7 +30,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/register-confirmation" element={<RegisterConfirmation />} />
         
         {/* Rotas protegidas para workbench (proprietários e admins) */}
-        <Route path="/Workbench" element={
+        <Route path="/workbench" element={
           <ProtectedWorkbenchRoute>
             <Workbench />
           </ProtectedWorkbenchRoute>
@@ -40,17 +40,17 @@ createRoot(document.getElementById('root')).render(
             <RegistrationCourts />
           </ProtectedWorkbenchRoute>
         } />
-        <Route path="/MyCourts" element={
+        <Route path="/my-courts" element={
           <ProtectedWorkbenchRoute>
             <MyCourts/>
           </ProtectedWorkbenchRoute>
         } />
-        <Route path="/BookingsScreen" element={
+        <Route path="/bookings" element={
           <ProtectedWorkbenchRoute>
             <BookingsScreen/>
           </ProtectedWorkbenchRoute>
         } />
-        <Route path="/FinancialScreen" element={
+        <Route path="/financial" element={
           <ProtectedWorkbenchRoute>
             <FinancialScreen />
           </ProtectedWorkbenchRoute>
@@ -62,14 +62,14 @@ createRoot(document.getElementById('root')).render(
             <MyAccountScreen />
           </ProtectedRoute>
         } />
-        <Route path="/SupportScreen" element={
+        <Route path="/support" element={
           <ProtectedRoute>
             <SupportScreen />
           </ProtectedRoute>
         } />
         
         {/* Rota protegida apenas para admins */}
-        <Route path="/AdminPanel" element={
+        <Route path="/admin" element={
           <ProtectedAdminRoute>
             <AdminPanel />
           </ProtectedAdminRoute>

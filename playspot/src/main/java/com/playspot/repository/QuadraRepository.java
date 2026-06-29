@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 public interface QuadraRepository extends JpaRepository<Quadra, Integer> {
     // Método para buscar quadras pelo ID do proprietário
-    List<Quadra> findByIdProprietario(int idProprietario);
+    List<Quadra> findByProprietario_IdUser(int idProprietario);
 }

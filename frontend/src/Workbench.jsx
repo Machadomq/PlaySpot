@@ -23,16 +23,16 @@ function Workbench() {
             {/* Funcionalidades para proprietários e admins */}
             {(isProprietario || isAdmin) && (
               <>
-                <button className="hotbar-item" onClick={() => handleNavigation('/MyCourts')}>
+                <button className="hotbar-item" onClick={() => handleNavigation('/my-courts')}>
                   {isAdmin ? 'Todas as Quadras' : 'Minhas Quadras'}
                 </button>
-                <button className="hotbar-item" onClick={() => handleNavigation('/Registration-courts')}>
+                <button className="hotbar-item" onClick={() => handleNavigation('/registration-courts')}>
                   Cadastrar Quadra
                 </button>
-                <button className="hotbar-item" onClick={() => handleNavigation('/BookingsScreen')}>
+                <button className="hotbar-item" onClick={() => handleNavigation('/bookings')}>
                   {isAdmin ? 'Todas as Reservas' : 'Minhas Reservas'}
                 </button>
-                <button className="hotbar-item" onClick={() => handleNavigation('/FinancialScreen')}>
+                <button className="hotbar-item" onClick={() => handleNavigation('/financial')}>
                   Financeiro
                 </button>
               </>
@@ -40,7 +40,7 @@ function Workbench() {
             
             {/* Funcionalidades exclusivas para admins */}
             {isAdmin && (
-              <button className="hotbar-item" onClick={() => handleNavigation('/AdminPanel')}>
+              <button className="hotbar-item" onClick={() => handleNavigation('/admin')}>
                 Painel Admin
               </button>
             )}
@@ -49,7 +49,7 @@ function Workbench() {
             <button className="hotbar-item" onClick={() => handleNavigation('/my-account')}>
               Minha conta
             </button>
-            <button className="hotbar-item" onClick={() => handleNavigation('/SupportScreen')}>
+            <button className="hotbar-item" onClick={() => handleNavigation('/support')}>
               Suporte
             </button>
             <button className="hotbar-item logout-btn" onClick={handleLogout}>

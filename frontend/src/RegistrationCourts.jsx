@@ -44,7 +44,7 @@ function RegistrationCourts() {
             });
             console.log('Quadra cadastrada:', response.data);
             alert('Quadra cadastrada com sucesso!');
-            navigate('/MyCourts');
+            navigate('/my-courts');
         } catch (error) {
             console.error('Erro ao cadastrar quadra:', error.response?.data || error.message);
             if (error.response && error.response.status === 403) {
@@ -66,12 +66,12 @@ function RegistrationCourts() {
             </header>
 
             <div className="hotbar-container">
-                <button className="hotbar-item" onClick={() => handleNavigation('/MyCourts')}>Minhas Quadras</button>
-                <button className="hotbar-item" onClick={() => handleNavigation('/Registration-courts')}>Cadastrar Quadra</button>
-                <button className="hotbar-item" onClick={() => handleNavigation('/BookingsScreen')}>Reservas</button>
-                <button className="hotbar-item" onClick={() => handleNavigation('/FinancialScreen')}>Financeiro</button>
+                <button className="hotbar-item" onClick={() => handleNavigation('/my-courts')}>Minhas Quadras</button>
+                <button className="hotbar-item" onClick={() => handleNavigation('/registration-courts')}>Cadastrar Quadra</button>
+                <button className="hotbar-item" onClick={() => handleNavigation('/bookings')}>Reservas</button>
+                <button className="hotbar-item" onClick={() => handleNavigation('/financial')}>Financeiro</button>
                 <button className="hotbar-item" onClick={() => handleNavigation('/my-account')}>Minha conta</button>
-                <button className="hotbar-item" onClick={() => handleNavigation('/SupportScreen')}>Suporte</button>
+                <button className="hotbar-item" onClick={() => handleNavigation('/support')}>Suporte</button>
             </div>
 
             <div className="workbench-content">

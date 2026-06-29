@@ -39,7 +39,13 @@ public class QuadraController {
         Quadra savedQuadra = quadraService.saveQuadra(quadra);
         return ResponseEntity.ok(savedQuadra);
     }
-      // Endpoint para listar todas as quadras
+      // Endpoint público para listar quadras na home
+    @GetMapping("/public")
+    public ResponseEntity<List<Quadra>> getPublicQuadras() {
+        return ResponseEntity.ok(quadraService.findAllQuadras());
+    }
+
+    // Endpoint para listar todas as quadras
     @GetMapping
     public ResponseEntity<?> getAllQuadras(@RequestHeader("userId") int userId) {
         // Apenas administradores podem ver todas as quadras
